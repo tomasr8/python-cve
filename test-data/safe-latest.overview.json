@@ -1,0 +1,71 @@
+{
+  "3.14": {
+    "version": [3, 14],
+    "is_affected": true,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {
+      "3.14.0": {"name": "MEDIUM", "score": 5.5, "version": "4.0"}
+    },
+    "total_advisories": 2,
+    "last_published": "2025-10-15T10:00:00+00:00",
+    "affected_versions": [[[3, 14, 0]]],
+    "safe_versions": [[[3, 14, 1], [3, 14, 2]]]
+  },
+  "3.13": {
+    "version": [3, 13],
+    "is_affected": true,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {
+      "3.13.0": {"name": "HIGH", "score": 7.5, "version": "3.1"},
+      "3.13.1": {"name": "HIGH", "score": 7.5, "version": "3.1"},
+      "3.13.2": {"name": "MEDIUM", "score": 5.0, "version": "4.0"},
+      "3.13.3": {"name": "MEDIUM", "score": 5.0, "version": "4.0"},
+      "3.13.4": {"name": "LOW", "score": 2.5, "version": "3.1"},
+      "3.13.5": {"name": "LOW", "score": 2.5, "version": "3.1"}
+    },
+    "total_advisories": 8,
+    "last_published": "2025-09-20T14:00:00+00:00",
+    "affected_versions": [[[3, 13, 0], [3, 13, 5]]],
+    "safe_versions": [[[3, 13, 6], [3, 13, 11]]]
+  },
+  "3.12": {
+    "version": [3, 12],
+    "is_affected": true,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {
+      "3.12.0": {"name": "CRITICAL", "score": 9.1, "version": "3.1"},
+      "3.12.1": {"name": "CRITICAL", "score": 9.1, "version": "3.1"},
+      "3.12.2": {"name": "HIGH", "score": 8.0, "version": "3.1"},
+      "3.12.3": {"name": "HIGH", "score": 8.0, "version": "3.1"},
+      "3.12.4": {"name": "MEDIUM", "score": 6.0, "version": "4.0"}
+    },
+    "total_advisories": 12,
+    "last_published": "2025-08-10T09:00:00+00:00",
+    "affected_versions": [[[3, 12, 0], [3, 12, 4]]],
+    "safe_versions": [[[3, 12, 5], [3, 12, 12]]]
+  },
+  "3.11": {
+    "version": [3, 11],
+    "is_affected": true,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {
+      "3.11.0": {"name": "MEDIUM", "score": 6.5, "version": "4.0"},
+      "3.11.1": {"name": "MEDIUM", "score": 6.5, "version": "4.0"},
+      "3.11.2": {"name": "LOW", "score": 3.0, "version": "3.1"}
+    },
+    "total_advisories": 5,
+    "last_published": "2025-06-01T12:00:00+00:00",
+    "affected_versions": [[[3, 11, 0], [3, 11, 2]]],
+    "safe_versions": [[[3, 11, 3], [3, 11, 14]]]
+  },
+  "3.10": {
+    "version": [3, 10],
+    "is_affected": false,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {},
+    "total_advisories": 0,
+    "last_published": null,
+    "affected_versions": [],
+    "safe_versions": [[[3, 10, 0], [3, 10, 19]]]
+  }
+}

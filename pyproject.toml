@@ -1,0 +1,61 @@
+[project]
+name = "pythoncve"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = ["click>=8.3.1", "requests==2.32.5"]
+
+[project.scripts]
+pythoncve = "pythoncve.__main__:cli"
+
+[tool.pytest.ini_options]
+testpaths = ["tests/"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D",
+    "ANN002",
+    "ANN003",
+    "ANN204",
+    "ANN401",
+    "COM812",
+    "BLE001",
+    "ERA001",
+    "RET503",
+    "ISC001",
+    "N802",
+    "N803",
+    "N806",
+    "N818",
+    "S101",
+    "PLC0415",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"pythoncve/git.py" = ["S603", "S607"]
+"tests/*" = ["ANN001", "ANN201", "ANN202", "PLR2004"]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+
+[tool.hatch.build.targets.wheel]
+packages = ["pythoncve"]
+
+[build-system]
+requires = ["hatchling==1.28.0"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest==9.0.2",
+    "pytest-snapshot==0.9.0",
+    "pytest-cov==7.0.0",
+    "ruff==0.14.8",
+    "ty",
+]

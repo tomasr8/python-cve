@@ -1,0 +1,99 @@
+[
+  {
+    "id": "PSF-2025-LONG-1",
+    "cve": "CVE-2025-0001",
+    "published": "2025-12-20T10:00:00+00:00",
+    "modified": "2025-12-20T15:30:00+00:00",
+    "severity": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+    "details": "This is an extremely detailed vulnerability description that spans multiple paragraphs and includes various technical details about the security issue.\n\nThe vulnerability exists in the core Python interpreter's handling of specially crafted bytecode sequences. When the interpreter encounters a malformed code object with specific properties, it fails to properly validate the bytecode instructions, leading to a type confusion vulnerability. This can be exploited by an attacker to achieve arbitrary code execution.\n\nTechnical Details:\n- The vulnerability is triggered when loading untrusted .pyc files\n- Affected code path: Python/ceval.c in the main evaluation loop\n- Root cause: Missing validation of LOAD_CONST argument indices\n- CVSS Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H\n\nFor more technical information, see:\n- Official Advisory: https://python.org/security/advisory-2025-0001\n- CVE Details: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-0001\n- GitHub Security Advisory: https://github.com/python/cpython/security/advisories/GHSA-xxxx-yyyy-zzzz\n- Related PEP: https://peps.python.org/pep-0001/\n\nMitigation:\nIf you cannot upgrade immediately, you can mitigate this vulnerability by:\n1. Avoiding loading untrusted .pyc files\n2. Using the -B flag to prevent bytecode caching\n3. Setting PYTHONDONTWRITEBYTECODE=1 environment variable\n\nWe strongly recommend upgrading to the latest patched version as soon as possible.",
+    "introduced_commits": ["abc123def456789"],
+    "fixed_commits": ["987654321fedcba"],
+    "affected_versions": [
+      [[3, 10, 0], [3, 10, 19]],
+      [[3, 11, 0], [3, 11, 5]],
+      [[3, 12, 0], [3, 12, 2]],
+      [[3, 13, 0], [3, 13, 3]],
+      [[3, 14, 0], [3, 14, 1]]
+    ],
+    "affected_eol_versions": [
+      [[3, 8, 0], [3, 8, 20]],
+      [[3, 9, 0], [3, 9, 21]]
+    ],
+    "fixed_versions": [[3, 11, 6], [3, 12, 3], [3, 13, 4], [3, 14, 2]],
+    "fixed_pending_versions": [[3, 10]]
+  },
+  {
+    "id": "PSF-2025-LONG-2",
+    "cve": "CVE-2025-0002",
+    "published": "2025-12-19T08:00:00+00:00",
+    "modified": "2025-12-19T08:00:00+00:00",
+    "severity": {"name": "HIGH", "score": 8.5, "version": "3.1"},
+    "details": "A high-severity buffer overflow vulnerability has been discovered in Python's ssl module when processing X.509 certificates with extremely long subject alternative names (SANs).\n\nThe ssl module uses a fixed-size buffer to store parsed certificate information. When processing a certificate with a SAN field exceeding 65535 bytes, the buffer overflows, potentially allowing an attacker to:\n- Crash the Python process (denial of service)\n- Leak sensitive memory contents\n- Potentially achieve remote code execution in certain configurations\n\nThis vulnerability is particularly concerning for applications that:\n- Accept TLS connections from untrusted clients\n- Verify client certificates without size limits\n- Use custom certificate verification callbacks\n\nReferences:\n- OpenSSL Advisory: https://www.openssl.org/news/vulnerabilities.html\n- Python Issue Tracker: https://bugs.python.org/issue99999\n- Detailed Write-up: https://security-research.example.com/python-ssl-overflow-2025\n\nWorkaround:\nYou can add certificate size validation before processing:\n```python\ndef validate_cert_size(cert_der):\n    if len(cert_der) > 1048576:  # 1MB limit\n        raise ValueError(\"Certificate too large\")\n```",
+    "introduced_commits": ["111222333444555"],
+    "fixed_commits": ["666777888999000"],
+    "affected_versions": [
+      [[3, 12, 0], [3, 12, 6]],
+      [[3, 13, 0], [3, 13, 6]],
+      [[3, 14, 0], [3, 14, 2]]
+    ],
+    "affected_eol_versions": [],
+    "fixed_versions": [[3, 12, 7], [3, 13, 7]],
+    "fixed_pending_versions": [[3, 14]]
+  },
+  {
+    "id": "PSF-2025-LONG-3",
+    "cve": null,
+    "published": "2025-12-18T12:00:00+00:00",
+    "modified": "2025-12-18T12:00:00+00:00",
+    "severity": {"name": "MEDIUM", "score": 6.5, "version": "4.0"},
+    "details": "This advisory does not have an associated CVE ID yet. A CVE has been requested and will be assigned shortly.\n\nThe vulnerability affects the zipfile module's handling of symbolic links within ZIP archives. When extracting an archive containing specially crafted symbolic links, an attacker could potentially write files outside the intended extraction directory (path traversal).\n\nFor more information about secure ZIP extraction practices, see: https://docs.python.org/3/library/zipfile.html#zipfile-path-traversal",
+    "introduced_commits": ["aabbccdd"],
+    "fixed_commits": ["eeffgghh"],
+    "affected_versions": [
+      [[3, 11, 0], [3, 11, 12]],
+      [[3, 12, 7], [3, 12, 10]],
+      [[3, 13, 7], [3, 13, 9]]
+    ],
+    "affected_eol_versions": [],
+    "fixed_versions": [[3, 11, 13], [3, 12, 11], [3, 13, 10]],
+    "fixed_pending_versions": []
+  },
+  {
+    "id": "PSF-2025-LONG-4",
+    "cve": "CVE-2025-0004",
+    "published": "2025-12-15T16:00:00+00:00",
+    "modified": "2025-12-16T09:00:00+00:00",
+    "severity": {"name": "LOW", "score": 2.5, "version": "3.1"},
+    "details": "A minor information disclosure vulnerability exists in Python's traceback module. Under specific error conditions, the traceback output may include environment variable values that were intended to be redacted. This only affects debug/development environments where PYTHONFAULTHANDLER is enabled and specific exception types are raised.\n\nImpact is minimal as exploitation requires:\n1. Local access to trigger the error condition\n2. PYTHONFAULTHANDLER to be enabled\n3. Specific timing conditions\n\nThis is primarily a defense-in-depth fix.",
+    "introduced_commits": ["00001111"],
+    "fixed_commits": ["22223333"],
+    "affected_versions": [[[3, 13, 10], [3, 13, 11]]],
+    "affected_eol_versions": [],
+    "fixed_versions": [],
+    "fixed_pending_versions": [[3, 13]]
+  },
+  {
+    "id": "PSF-2025-LONG-5",
+    "cve": "CVE-2025-0005",
+    "published": "2025-12-10T10:00:00+00:00",
+    "modified": "2025-12-10T10:00:00+00:00",
+    "severity": {"name": "CRITICAL", "score": 10.0, "version": "3.1"},
+    "details": "EMERGENCY SECURITY UPDATE - MAXIMUM SEVERITY\n\nA critical vulnerability allowing unauthenticated remote code execution has been discovered. This vulnerability is being actively exploited in the wild.\n\nALL PYTHON USERS SHOULD UPDATE IMMEDIATELY.\n\nThe vulnerability exists in the http.server module's handling of chunked transfer encoding. A remote attacker can send specially crafted HTTP requests to trigger arbitrary code execution with the privileges of the Python process.\n\nKnown exploitation:\n- First observed: 2025-12-08\n- Active campaigns targeting: Web applications, development servers\n- Attribution: Unknown threat actor\n\nIOCs (Indicators of Compromise):\n- Unusual HTTP requests with malformed chunk sizes\n- Python processes spawning unexpected child processes\n- Network connections to known C2 infrastructure\n\nImmediate Actions:\n1. UPDATE TO THE LATEST PYTHON VERSION IMMEDIATELY\n2. If you cannot update, DISABLE http.server or block external access\n3. Review logs for signs of exploitation\n4. Report suspected compromises to security@python.org\n\nMore information: https://python.org/security/emergency-2025-0005",
+    "introduced_commits": ["critcrit"],
+    "fixed_commits": ["fixfixfix"],
+    "affected_versions": [
+      [[3, 10, 0], [3, 10, 19]],
+      [[3, 11, 0], [3, 11, 14]],
+      [[3, 12, 0], [3, 12, 12]],
+      [[3, 13, 0], [3, 13, 11]],
+      [[3, 14, 0], [3, 14, 2]]
+    ],
+    "affected_eol_versions": [
+      [[3, 7, 0], [3, 7, 17]],
+      [[3, 8, 0], [3, 8, 20]],
+      [[3, 9, 0], [3, 9, 21]]
+    ],
+    "fixed_versions": [],
+    "fixed_pending_versions": [[3, 10], [3, 11], [3, 12], [3, 13], [3, 14]]
+  }
+]

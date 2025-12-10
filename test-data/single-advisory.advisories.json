@@ -1,0 +1,16 @@
+[
+  {
+    "id": "PSF-2025-ONLY",
+    "cve": "CVE-2025-9999",
+    "published": "2025-12-15T10:00:00+00:00",
+    "modified": "2025-12-15T10:00:00+00:00",
+    "severity": {"name": "MEDIUM", "score": 5.5, "version": "4.0"},
+    "details": "This is the only advisory in the database. It affects Python 3.13.0 only and has been fixed in 3.13.1.",
+    "introduced_commits": ["abc123"],
+    "fixed_commits": ["def456"],
+    "affected_versions": [[[3, 13, 0]]],
+    "affected_eol_versions": [],
+    "fixed_versions": [[3, 13, 1]],
+    "fixed_pending_versions": []
+  }
+]

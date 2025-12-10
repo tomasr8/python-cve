@@ -1,0 +1,58 @@
+[
+  {
+    "id": "PSF-2025-100",
+    "cve": "CVE-2025-1001",
+    "published": "2025-10-15T10:00:00+00:00",
+    "modified": "2025-10-15T10:00:00+00:00",
+    "severity": {"name": "MEDIUM", "score": 5.5, "version": "4.0"},
+    "details": "A medium-severity issue in the tempfile module. Fixed in Python 3.14.1.",
+    "introduced_commits": ["aaa111"],
+    "fixed_commits": ["bbb222"],
+    "affected_versions": [[[3, 14, 0]]],
+    "affected_eol_versions": [],
+    "fixed_versions": [[3, 14, 1]],
+    "fixed_pending_versions": []
+  },
+  {
+    "id": "PSF-2025-101",
+    "cve": "CVE-2025-1002",
+    "published": "2025-09-20T14:00:00+00:00",
+    "modified": "2025-09-20T14:00:00+00:00",
+    "severity": {"name": "HIGH", "score": 7.5, "version": "3.1"},
+    "details": "High-severity vulnerability in xml.etree. All users should upgrade to the latest patch version.",
+    "introduced_commits": ["ccc333"],
+    "fixed_commits": ["ddd444"],
+    "affected_versions": [[[3, 13, 0], [3, 13, 1]]],
+    "affected_eol_versions": [],
+    "fixed_versions": [[3, 13, 2]],
+    "fixed_pending_versions": []
+  },
+  {
+    "id": "PSF-2025-102",
+    "cve": "CVE-2025-1003",
+    "published": "2025-08-10T09:00:00+00:00",
+    "modified": "2025-08-10T09:00:00+00:00",
+    "severity": {"name": "CRITICAL", "score": 9.1, "version": "3.1"},
+    "details": "Critical RCE vulnerability. This has been fully patched in Python 3.12.5 and later.",
+    "introduced_commits": ["eee555"],
+    "fixed_commits": ["fff666"],
+    "affected_versions": [[[3, 12, 0], [3, 12, 4]]],
+    "affected_eol_versions": [],
+    "fixed_versions": [[3, 12, 5]],
+    "fixed_pending_versions": []
+  },
+  {
+    "id": "PSF-2025-103",
+    "cve": "CVE-2025-1004",
+    "published": "2025-06-01T12:00:00+00:00",
+    "modified": "2025-06-01T12:00:00+00:00",
+    "severity": {"name": "LOW", "score": 3.0, "version": "3.1"},
+    "details": "Low-severity information disclosure. Patched in 3.11.3.",
+    "introduced_commits": ["ggg777"],
+    "fixed_commits": ["hhh888"],
+    "affected_versions": [[[3, 11, 0], [3, 11, 2]]],
+    "affected_eol_versions": [],
+    "fixed_versions": [[3, 11, 3]],
+    "fixed_pending_versions": []
+  }
+]

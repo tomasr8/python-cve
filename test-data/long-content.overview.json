@@ -1,0 +1,120 @@
+{
+  "3.14": {
+    "version": [3, 14],
+    "is_affected": true,
+    "all_versions_affected": true,
+    "severity_by_patch_version": {
+      "3.14.0": {"name": "HIGH", "score": 8.5, "version": "3.1"},
+      "3.14.1": {"name": "HIGH", "score": 8.5, "version": "3.1"},
+      "3.14.2": {"name": "MEDIUM", "score": 6.0, "version": "4.0"}
+    },
+    "total_advisories": 15,
+    "last_published": "2025-12-20T10:00:00+00:00",
+    "affected_versions": [[[3, 14, 0], [3, 14, 2]]],
+    "safe_versions": []
+  },
+  "3.13": {
+    "version": [3, 13],
+    "is_affected": true,
+    "all_versions_affected": true,
+    "severity_by_patch_version": {
+      "3.13.0": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+      "3.13.1": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+      "3.13.2": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+      "3.13.3": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+      "3.13.4": {"name": "HIGH", "score": 8.0, "version": "3.1"},
+      "3.13.5": {"name": "HIGH", "score": 8.0, "version": "3.1"},
+      "3.13.6": {"name": "HIGH", "score": 7.5, "version": "3.1"},
+      "3.13.7": {"name": "MEDIUM", "score": 6.5, "version": "4.0"},
+      "3.13.8": {"name": "MEDIUM", "score": 6.0, "version": "4.0"},
+      "3.13.9": {"name": "MEDIUM", "score": 5.5, "version": "4.0"},
+      "3.13.10": {"name": "LOW", "score": 3.5, "version": "3.1"},
+      "3.13.11": {"name": "LOW", "score": 2.5, "version": "3.1"}
+    },
+    "total_advisories": 50,
+    "last_published": "2025-12-19T15:30:00+00:00",
+    "affected_versions": [[[3, 13, 0], [3, 13, 11]]],
+    "safe_versions": []
+  },
+  "3.12": {
+    "version": [3, 12],
+    "is_affected": true,
+    "all_versions_affected": true,
+    "severity_by_patch_version": {
+      "3.12.0": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.12.1": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.12.2": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.12.3": {"name": "HIGH", "score": 8.5, "version": "3.1"},
+      "3.12.4": {"name": "HIGH", "score": 8.5, "version": "3.1"},
+      "3.12.5": {"name": "HIGH", "score": 8.0, "version": "3.1"},
+      "3.12.6": {"name": "HIGH", "score": 8.0, "version": "3.1"},
+      "3.12.7": {"name": "MEDIUM", "score": 6.5, "version": "4.0"},
+      "3.12.8": {"name": "MEDIUM", "score": 6.5, "version": "4.0"},
+      "3.12.9": {"name": "MEDIUM", "score": 6.0, "version": "4.0"},
+      "3.12.10": {"name": "MEDIUM", "score": 5.5, "version": "4.0"},
+      "3.12.11": {"name": "LOW", "score": 3.0, "version": "3.1"},
+      "3.12.12": {"name": "LOW", "score": 2.0, "version": "3.1"}
+    },
+    "total_advisories": 45,
+    "last_published": "2025-12-18T12:00:00+00:00",
+    "affected_versions": [[[3, 12, 0], [3, 12, 12]]],
+    "safe_versions": []
+  },
+  "3.11": {
+    "version": [3, 11],
+    "is_affected": true,
+    "all_versions_affected": true,
+    "severity_by_patch_version": {
+      "3.11.0": {"name": "CRITICAL", "score": 10.0, "version": "3.1"},
+      "3.11.1": {"name": "CRITICAL", "score": 10.0, "version": "3.1"},
+      "3.11.2": {"name": "CRITICAL", "score": 10.0, "version": "3.1"},
+      "3.11.3": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+      "3.11.4": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+      "3.11.5": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.11.6": {"name": "HIGH", "score": 8.5, "version": "3.1"},
+      "3.11.7": {"name": "HIGH", "score": 8.5, "version": "3.1"},
+      "3.11.8": {"name": "HIGH", "score": 8.0, "version": "3.1"},
+      "3.11.9": {"name": "HIGH", "score": 7.5, "version": "3.1"},
+      "3.11.10": {"name": "MEDIUM", "score": 6.5, "version": "4.0"},
+      "3.11.11": {"name": "MEDIUM", "score": 6.0, "version": "4.0"},
+      "3.11.12": {"name": "MEDIUM", "score": 5.5, "version": "4.0"},
+      "3.11.13": {"name": "LOW", "score": 3.0, "version": "3.1"},
+      "3.11.14": {"name": "LOW", "score": 2.5, "version": "3.1"}
+    },
+    "total_advisories": 60,
+    "last_published": "2025-12-17T09:00:00+00:00",
+    "affected_versions": [[[3, 11, 0], [3, 11, 14]]],
+    "safe_versions": []
+  },
+  "3.10": {
+    "version": [3, 10],
+    "is_affected": true,
+    "all_versions_affected": true,
+    "severity_by_patch_version": {
+      "3.10.0": {"name": "CRITICAL", "score": 10.0, "version": "3.1"},
+      "3.10.1": {"name": "CRITICAL", "score": 10.0, "version": "3.1"},
+      "3.10.2": {"name": "CRITICAL", "score": 10.0, "version": "3.1"},
+      "3.10.3": {"name": "CRITICAL", "score": 10.0, "version": "3.1"},
+      "3.10.4": {"name": "CRITICAL", "score": 9.9, "version": "3.1"},
+      "3.10.5": {"name": "CRITICAL", "score": 9.9, "version": "3.1"},
+      "3.10.6": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+      "3.10.7": {"name": "CRITICAL", "score": 9.8, "version": "3.1"},
+      "3.10.8": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.9": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.10": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.11": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.12": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.13": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.14": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.15": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.16": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.17": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.18": {"name": "CRITICAL", "score": 9.5, "version": "3.1"},
+      "3.10.19": {"name": "CRITICAL", "score": 9.5, "version": "3.1"}
+    },
+    "total_advisories": 100,
+    "last_published": "2025-12-15T08:00:00+00:00",
+    "affected_versions": [[[3, 10, 0], [3, 10, 19]]],
+    "safe_versions": []
+  }
+}

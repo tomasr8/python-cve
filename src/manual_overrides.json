@@ -1,0 +1,37 @@
+[
+  {
+    "id": "PSF-2019-13",
+    "severity": {
+      "name": "LOW",
+      "version": "3.1"
+    }
+  },
+  {
+    "id": "PSF-2024-6",
+    "severity": {
+      "name": "LOW",
+      "version": "3.1"
+    }
+  },
+  {
+    "id": "PSF-2024-8",
+    "severity": {
+      "name": "MEDIUM",
+      "version": "3.1"
+    }
+  },
+  {
+    "id": "PSF-2024-9",
+    "severity": {
+      "name": "LOW",
+      "version": "3.1"
+    }
+  },
+  {
+    "id": "PSF-2024-11",
+    "severity": {
+      "name": "MEDIUM",
+      "version": "3.1"
+    }
+  }
+]

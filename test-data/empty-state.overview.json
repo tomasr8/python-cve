@@ -1,0 +1,52 @@
+{
+  "3.14": {
+    "version": [3, 14],
+    "is_affected": false,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {},
+    "total_advisories": 0,
+    "last_published": null,
+    "affected_versions": [],
+    "safe_versions": [[[3, 14, 0], [3, 14, 2]]]
+  },
+  "3.13": {
+    "version": [3, 13],
+    "is_affected": false,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {},
+    "total_advisories": 0,
+    "last_published": null,
+    "affected_versions": [],
+    "safe_versions": [[[3, 13, 0], [3, 13, 11]]]
+  },
+  "3.12": {
+    "version": [3, 12],
+    "is_affected": false,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {},
+    "total_advisories": 0,
+    "last_published": null,
+    "affected_versions": [],
+    "safe_versions": [[[3, 12, 0], [3, 12, 12]]]
+  },
+  "3.11": {
+    "version": [3, 11],
+    "is_affected": false,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {},
+    "total_advisories": 0,
+    "last_published": null,
+    "affected_versions": [],
+    "safe_versions": [[[3, 11, 0], [3, 11, 14]]]
+  },
+  "3.10": {
+    "version": [3, 10],
+    "is_affected": false,
+    "all_versions_affected": false,
+    "severity_by_patch_version": {},
+    "total_advisories": 0,
+    "last_published": null,
+    "affected_versions": [],
+    "safe_versions": [[[3, 10, 0], [3, 10, 19]]]
+  }
+}
