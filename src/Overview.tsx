@@ -445,7 +445,7 @@ export default function VersionOverview({ handleViewCVEs }) {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 cursor-pointer">
                         {data.last_published && (
                           <div className="text-xs text-dark-text-muted">
                             {(() => {
@@ -453,10 +453,7 @@ export default function VersionOverview({ handleViewCVEs }) {
                                 data.last_published
                               )
                               return formatted ? (
-                                <span
-                                  className="cursor-help"
-                                  title={formatted.full}
-                                >
+                                <span title={formatted.full}>
                                   {formatted.relative}
                                 </span>
                               ) : null

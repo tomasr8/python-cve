@@ -278,7 +278,7 @@ function Header({
         <div className="hidden md:flex flex-col items-end text-xs text-dark-text-muted shrink-0">
           <span className="uppercase tracking-wider">Last Update</span>
           <span
-            className="font-mono text-sm text-dark-text cursor-help"
+            className="font-mono text-sm text-dark-text"
             title={lastUpdateDate.full}
           >
             {lastUpdateDate.relative}
