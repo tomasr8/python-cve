@@ -134,18 +134,6 @@ def parse_advisories(tags: set[Tag]) -> list[Advisory]:
 
         advisory.fixed_pending_versions = sorted(pending_minors)
 
-        # Prune fixed versions to keep only the earliest patch version for each minor
-        pruned = {}
-        for version in advisory.fixed_versions:
-            minor = version[1]
-            if minor not in pruned:
-                pruned[minor] = version
-            else:
-                existing = pruned[minor]
-                if version < existing:
-                    pruned[minor] = version
-        advisory.fixed_versions = sorted(pruned.values())
-
         # Filter out EOL versions
         advisory.affected_eol_versions = {
             v
