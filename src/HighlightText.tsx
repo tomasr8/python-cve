@@ -6,8 +6,7 @@ function highlight(text: string, searchTerm: string) {
     return text
   }
 
-  const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
-  const regex = new RegExp(`(${escapedTerm})`, "gi")
+  const regex = new RegExp(`(${RegExp.escape(searchTerm)})`, "gi")
   const parts = text.split(regex)
 
   if (parts.length === 1) {

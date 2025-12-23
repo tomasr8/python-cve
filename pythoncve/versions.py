@@ -1,11 +1,9 @@
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import UTC, datetime
-from typing import TypeAlias
 from pathlib import Path
+from typing import TypeAlias
 
-from pythoncve.git import Tag, get_reachable_commits, is_ancestor
-from pythoncve.util import FIRST_COMMIT
+from pythoncve.git import Tag, get_reachable_commits
 
 
 Version: TypeAlias = tuple[int, int, int]
@@ -145,15 +143,3 @@ def compute_ancestry_optimized(
             descendants[commit].add(tag.version)
 
     return descendants
-
-
-def get_affected_tags(
-    repo_path: Path,
-    introduced_commit: str,
-    tags: set[Tag],
-) -> set[Tag]:
-    """Get all tags affected by a given introduced commit."""
-    if introduced_commit == FIRST_COMMIT:
-        return tags
-
-    return {tag for tag in tags if is_ancestor(repo_path, introduced_commit, tag.commit_sha)}

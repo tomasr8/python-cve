@@ -1,3 +1,4 @@
+import datetime
 import re
 from pathlib import Path
 
@@ -5,7 +6,10 @@ from pathlib import Path
 ADVISORY_REPO_URL = "https://github.com/psf/advisory-database.git"
 CPYTHON_REPO_URL = "https://github.com/python/cpython.git"
 
-TMP_DIR = Path(__file__).parent.parent / "tmp"
+REPO_ROOT = Path(__file__).parent.parent
+
+TMP_DIR = REPO_ROOT / "tmp"
+SRC_DIR = REPO_ROOT / "src"
 
 CPYTHON_REPO = TMP_DIR / "cpython"
 ADVISORY_REPO = TMP_DIR / "advisory-database"
@@ -23,3 +27,7 @@ def parse_cpython_version(tag_name: str) -> tuple[int, int, int] | None:
     if not match:
         return None
     return tuple(map(int, match.groups()))
+
+
+def now_utc() -> str:
+    return datetime.datetime.now(datetime.UTC).replace(microsecond=0).isoformat()

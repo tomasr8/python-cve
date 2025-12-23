@@ -1,11 +1,14 @@
 import { useState, useEffect, useMemo, useRef } from "react"
 import advisories from "virtual:combined-advisories"
+import { last_updated } from "/src/overview.json"
 import { formatRelativeTime } from "./util"
 import { pythonVersions } from "./config"
 import Controls from "./Controls"
 import VersionOverview from "./Overview"
 import HighlightText from "./HighlightText"
 import { Version } from "./types"
+
+const lastUpdateDate = formatRelativeTime(last_updated)
 
 function App() {
   const validSortOptions = [
@@ -179,11 +182,6 @@ function App() {
 
     return sorted
   }, [advisories, selectedVersion, searchTerm, sortBy])
-
-  // Calculate last update date
-  const lastUpdateDate = useMemo(() => {
-    return formatRelativeTime("2025-12-11T00:00:00Z") // TODO: Hardcoded last update date
-  }, [])
 
   // Handle version selection and scroll to advisories list
   const handleViewCVEs = (version: string) => {

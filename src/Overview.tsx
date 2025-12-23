@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import overview from "/src/overview.json"
+import { overview, last_update } from "/src/overview.json"
 import { formatRelativeTime, compressPatchVersions } from "./util"
 import { latestPatchVersions, eolVersions } from "./config"
 

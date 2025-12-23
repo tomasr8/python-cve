@@ -56,16 +56,6 @@ def get_reachable_commits(repo_path: Path, commit_sha: str) -> list[str]:
     return result.stdout.strip().split("\n")
 
 
-def is_ancestor(repo_path: Path, ancestor_sha: str, descendant_sha: str) -> bool:
-    """Check if ancestor_sha is an ancestor of descendant_sha."""
-    result = subprocess.run(
-        ["git", "merge-base", "--is-ancestor", ancestor_sha, descendant_sha],
-        cwd=repo_path,
-        check=False,
-    )
-    return result.returncode == 0
-
-
 def clone_advisory_repo() -> None:
     """Clone the advisory-database repository if not already present."""
     if not ADVISORY_REPO.exists():

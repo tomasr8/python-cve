@@ -26,3 +26,13 @@ declare module "virtual:combined-advisories" {
   const advisories: Advisory[]
   export default advisories
 }
+
+declare module "/src/overview.json" {
+  interface Overview {
+    last_updated: string
+    [key: string]: any
+  }
+
+  const overview: Overview
+  export default overview
+}
