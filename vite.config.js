@@ -82,5 +82,6 @@ function deepMerge(target, source) {
 }
 
 export default defineConfig({
+  base: '/python-cve/',
   plugins: [react(), mergeAdvisoriesPlugin()],
 })
