@@ -1,7 +1,8 @@
+import re
 import subprocess
 from pathlib import Path
 
-from pythoncve.models import Tag
+from pythoncve.models import Branch, Tag
 from pythoncve.util import (
     ADVISORY_REPO,
     ADVISORY_REPO_URL,
@@ -54,6 +55,33 @@ def get_reachable_commits(repo_path: Path, commit_sha: str) -> list[str]:
         cwd=repo_path,
     )
     return result.stdout.strip().split("\n")
+
+
+def get_cpython_version_branches(repo_path: Path) -> set[Branch]:
+    result = subprocess.run(
+        [
+            "git",
+            "branch",
+            "--list",
+            # %(objectname) = branch SHA
+            "--format=%(refname:short) %(objectname)",
+        ],
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=repo_path,
+    )
+    branches: set[Branch] = set()
+    for line in result.stdout.strip().split("\n"):
+        name, commit_sha = line.split()
+        if name == "main":
+            branches.add(Branch(version="main", commit_sha=commit_sha))
+        else:
+            match = re.match(r"^(\d+)\.(\d+)$", name)
+            if match:
+                version = tuple(map(int, match.groups()))
+                branches.add(Branch(version=version, commit_sha=commit_sha))
+    return branches
 
 
 def clone_advisory_repo() -> None:

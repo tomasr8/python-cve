@@ -15,16 +15,12 @@ def fetch_cve_data(
     return resp.json()
 
 
-def get_affected_versions(
-    cve_data: dict, tags: set[Tag]
-) -> set[tuple[int, int, int]]:
+def get_affected_versions(cve_data: dict, tags: set[Tag]) -> set[tuple[int, int, int]]:
     """Get the affected CPython versions from the CVE data."""
     affected = cve_data.get("containers", {}).get("cna", {}).get("affected", [{}])[0]
     versions = affected.get("versions", [])
     python_versions = [
-        v
-        for v in versions
-        if v.get("versionType") == "python" and v.get("status") == "affected"
+        v for v in versions if v.get("versionType") == "python" and v.get("status") == "affected"
     ]
     if not python_versions:
         return set()

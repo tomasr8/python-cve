@@ -3,7 +3,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import TypeAlias
 
-from pythoncve.git import Tag, get_reachable_commits
+from pythoncve.git import get_reachable_commits
+from pythoncve.models import Branch, Tag
 
 
 Version: TypeAlias = tuple[int, int, int]
@@ -141,5 +142,30 @@ def compute_ancestry_optimized(
 
         for commit in ancestors_of_tag:
             descendants[commit].add(tag.version)
+
+    return descendants
+
+
+def compute_ancestry_branch(
+    repo_path: Path,
+    branches: set[Branch],
+    commits: set[str],
+) -> dict[str, set[Branch]]:
+    """
+    Compute ancestry between branches and commits.
+
+    Returns:
+        dict[commit] = set of branches where commit is ancestor
+    """
+
+    descendants = defaultdict(set)
+    for branch in branches:
+        reachable = get_reachable_commits(repo_path, branch.commit_sha)
+
+        # Find which commits are ancestors of this branch
+        ancestors_of_branch = commits & set(reachable)
+
+        for commit in ancestors_of_branch:
+            descendants[commit].add(branch)
 
     return descendants

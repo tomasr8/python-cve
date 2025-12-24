@@ -3,10 +3,11 @@ import json
 from dataclasses import asdict
 
 from pythoncve.cve import fetch_cve_data, get_affected_versions, get_severity
-from pythoncve.models import Advisory, MinorVersionOverview, Tag
+from pythoncve.models import Advisory, Branch, MinorVersionOverview, Tag
 from pythoncve.util import ADVISORY_REPO, CPYTHON_REPO, FIRST_COMMIT
 from pythoncve.versions import (
     compress_patch_versions_into_ranges,
+    compute_ancestry_branch,
     compute_ancestry_optimized,
     get_latest_active_patch_versions,
     is_version_eol,
@@ -19,6 +20,24 @@ def get_raw_advisories() -> list[dict]:
         data = json.loads(path.read_text(encoding="utf-8"))
         raw.append(data)
     return raw
+
+
+def get_issue(data: dict) -> dict | None:
+    references = data.get("references")
+    if not references:
+        return None
+
+    reports = [
+        ref for ref in references if ref["type"].lower() == "report" or ref["type"].lower() == "web"
+    ]
+    for report in reports:
+        if "github.com/python/cpython/issues/" in report["url"]:
+            return {"type": "github", "url": report["url"]}
+    for report in reports:
+        if "bugs.python.org/issue" in report["url"]:
+            return {"type": "bpo", "url": report["url"]}
+
+    return None
 
 
 def parse_advisory(data: dict) -> Advisory:
@@ -47,6 +66,8 @@ def parse_advisory(data: dict) -> Advisory:
         if "fixed" in event:
             fixed_commits.add(event["fixed"])
 
+    issue = get_issue(data)
+
     assert data["id"]
     assert data["published"]
     assert data["modified"]
@@ -58,17 +79,19 @@ def parse_advisory(data: dict) -> Advisory:
         published=datetime.datetime.fromisoformat(data["published"]),
         modified=datetime.datetime.fromisoformat(data["modified"]),
         severity=None,
+        issue=issue,
         details=data["details"],
         introduced_commits=introduced_commits,
         fixed_commits=fixed_commits,
         affected_versions=set(),
         affected_eol_versions=set(),
-        fixed_versions=set(),
-        fixed_pending_versions=set(),
+        fixed_in=[],
+        fixed_but_not_released=[],
+        fixes_pending=[],
     )
 
 
-def parse_advisories(tags: set[Tag]) -> list[Advisory]:
+def parse_advisories(tags: set[Tag], branches: set[Branch]) -> list[Advisory]:
     advisories = []
     mentioned_commits = set()
 
@@ -82,6 +105,7 @@ def parse_advisories(tags: set[Tag]) -> list[Advisory]:
         advisories.append(advisory)
 
     results = compute_ancestry_optimized(CPYTHON_REPO, tags, mentioned_commits)
+    branch_ancestors = compute_ancestry_branch(CPYTHON_REPO, branches, mentioned_commits)
 
     tag_dates = {tag.version: tag.created_dt for tag in tags}
 
@@ -112,7 +136,16 @@ def parse_advisories(tags: set[Tag]) -> list[Advisory]:
             # Only the earliest fixed version is relevant
             if fixed_descendant_tags:
                 earliest_fixed = sorted(fixed_descendant_tags)[0]
-                advisory.fixed_versions.add(earliest_fixed)
+                advisory.fixed_in.append({"version": earliest_fixed, "commit": commit})
+            else:
+                br = branch_ancestors[commit]
+                assert br, "Every fixed commit must have either a descendant tag or a branch"
+                assert len(br) == 1
+                br_fixed = sorted(br)[0]
+                if br_fixed.version != "main":
+                    advisory.fixed_but_not_released.append(
+                        {"branch": br_fixed.version, "commit": commit}
+                    )
 
         if affected_versions_from_api:
             advisory.affected_versions = affected_versions_from_api
@@ -121,18 +154,14 @@ def parse_advisories(tags: set[Tag]) -> list[Advisory]:
 
         affected_minors = {v[:2] for v in advisory.affected_versions}
 
-        # advisory.fixed_versions = {
-        #     v for v in advisory.fixed_versions if v[:2] in affected_minors
-        # }
-
         # Find minor versions with pending fixes
-        fixed_minors = {v[:2] for v in advisory.fixed_versions}
+        fixed_minors = {v["version"][:2] for v in advisory.fixed_in}
         pending_minors = affected_minors - fixed_minors
         pending_minors = {
             m for m in pending_minors if not is_version_eol((m[0], m[1], 0), advisory.published)
         }
 
-        advisory.fixed_pending_versions = sorted(pending_minors)
+        advisory.fixes_pending = sorted(pending_minors)
 
         # Filter out EOL versions
         advisory.affected_eol_versions = {
@@ -143,9 +172,9 @@ def parse_advisories(tags: set[Tag]) -> list[Advisory]:
 
         advisory.affected_versions -= advisory.affected_eol_versions
 
-        # advisory.affected_versions = compress_versions_into_ranges(
-        #     advisory.affected_versions
-        # )
+        advisory.fixed_in.sort(key=lambda x: x["version"])
+        # advisory.fixed_but_not_released.sort(key=lambda x: x["version"]) TODO: sort
+        advisory.fixes_pending.sort()
 
     def sort_key(a: Advisory):
         parts = a.id.split("-")

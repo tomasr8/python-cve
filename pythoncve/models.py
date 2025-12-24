@@ -3,6 +3,24 @@ from __future__ import annotations
 import datetime
 import json
 from dataclasses import asdict, dataclass, field
+from typing import Literal
+
+
+@dataclass(frozen=True)
+class Branch:
+    version: tuple[int, int] | Literal["main"]
+    commit_sha: str
+
+    def __lt__(self, other: Branch) -> bool:
+        if self.is_main:
+            return False
+        if other.is_main:
+            return True
+        return self.version < other.version
+
+    @property
+    def is_main(self) -> bool:
+        return self.version == "main"
 
 
 @dataclass(frozen=True)
@@ -40,13 +58,15 @@ class Advisory:
     modified: str
     # CVSS severity; not all advisories have a severity
     severity: Severity | None
+    issue: dict | None
     details: str
     introduced_commits: set
     fixed_commits: set
     affected_versions: set
     affected_eol_versions: set
-    fixed_versions: set
-    fixed_pending_versions: set
+    fixed_in: list
+    fixed_but_not_released: list
+    fixes_pending: list
 
 
 class AdvisoryEncoder(json.JSONEncoder):

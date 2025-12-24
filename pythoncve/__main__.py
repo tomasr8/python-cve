@@ -3,7 +3,12 @@ import json
 import click
 
 from pythoncve.advisory import get_version_overview, parse_advisories
-from pythoncve.git import clone_advisory_repo, clone_cpython_repo, get_cpython_tags
+from pythoncve.git import (
+    clone_advisory_repo,
+    clone_cpython_repo,
+    get_cpython_tags,
+    get_cpython_version_branches,
+)
 from pythoncve.models import AdvisoryEncoder
 from pythoncve.util import CPYTHON_REPO, SRC_DIR, now_utc
 from pythoncve.versions import (
@@ -24,7 +29,9 @@ def update():
 
     tags = get_cpython_2x_or_3x_versions(get_cpython_tags(CPYTHON_REPO))
     print(f"Found {len(tags)} CPython version tags.")
-    advisories = parse_advisories(tags)
+    branches = get_cpython_version_branches(CPYTHON_REPO)
+    print(f"Found {len(branches)} CPython version branches.")
+    advisories = parse_advisories(tags, branches)
 
     overview = get_version_overview(advisories, tags)
 

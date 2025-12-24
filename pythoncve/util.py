@@ -23,7 +23,7 @@ def parse_cpython_version(tag_name: str) -> tuple[int, int, int] | None:
     Parse CPython version tag like v3.12.1 into (3, 12, 1).
     Returns None for non-version tags.
     """
-    match = re.match(r"v?(\d+)\.(\d+)\.(\d+)$", tag_name)
+    match = re.match(r"^v?(\d+)\.(\d+)\.(\d+)$", tag_name)
     if not match:
         return None
     return tuple(map(int, match.groups()))
