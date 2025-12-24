@@ -15,7 +15,7 @@ export function formatRelativeTime(dateString: string) {
   const diffMonths = Math.floor(diffDays / 30)
   const diffYears = Math.floor(diffDays / 365)
 
-  const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" })
+  const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" })
 
   let relative
   if (diffYears > 0) {

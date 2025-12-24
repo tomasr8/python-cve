@@ -6,6 +6,7 @@ declare module "virtual:combined-advisories" {
 
   interface Issue {
     type: "github" | "bpo"
+    issue_number: string
     url: string
   }
 

@@ -1,5 +1,6 @@
 import datetime
 import json
+import re
 from dataclasses import asdict
 
 from pythoncve.cve import fetch_cve_data, get_affected_versions, get_severity
@@ -27,15 +28,20 @@ def get_issue(data: dict) -> dict | None:
     if not references:
         return None
 
+    GH_URL = re.compile(r"https://github\.com/python/cpython/issues/(\d+)")
+    BPO_URL = re.compile(r"https://bugs\.python\.org/issue(\d+)")
+
     reports = [
         ref for ref in references if ref["type"].lower() == "report" or ref["type"].lower() == "web"
     ]
     for report in reports:
-        if "github.com/python/cpython/issues/" in report["url"]:
-            return {"type": "github", "url": report["url"]}
+        if match := GH_URL.match(report["url"]):
+            issue_number = match.group(1)
+            return {"type": "github", "url": report["url"], "issue_number": issue_number}
     for report in reports:
-        if "bugs.python.org/issue" in report["url"]:
-            return {"type": "bpo", "url": report["url"]}
+        if match := BPO_URL.match(report["url"]):
+            issue_number = match.group(1)
+            return {"type": "bpo", "url": report["url"], "issue_number": issue_number}
 
     return None
 
@@ -156,7 +162,8 @@ def parse_advisories(tags: set[Tag], branches: set[Branch]) -> list[Advisory]:
 
         # Find minor versions with pending fixes
         fixed_minors = {v["version"][:2] for v in advisory.fixed_in}
-        pending_minors = affected_minors - fixed_minors
+        fixed_but_not_released_minors = {v["branch"][:2] for v in advisory.fixed_but_not_released}
+        pending_minors = (affected_minors - fixed_minors) - fixed_but_not_released_minors
         pending_minors = {
             m for m in pending_minors if not is_version_eol((m[0], m[1], 0), advisory.published)
         }
@@ -173,7 +180,7 @@ def parse_advisories(tags: set[Tag], branches: set[Branch]) -> list[Advisory]:
         advisory.affected_versions -= advisory.affected_eol_versions
 
         advisory.fixed_in.sort(key=lambda x: x["version"])
-        # advisory.fixed_but_not_released.sort(key=lambda x: x["version"]) TODO: sort
+        advisory.fixed_but_not_released.sort(key=lambda x: x["branch"])
         advisory.fixes_pending.sort()
 
     def sort_key(a: Advisory):

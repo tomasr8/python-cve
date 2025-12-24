@@ -343,7 +343,7 @@ export default function VersionOverview({ handleViewCVEs }) {
                 Security Summary
               </th>
               <th className="text-left px-6 py-3 text-xs font-semibold text-dark-text-muted uppercase tracking-wider">
-                Last Advisory
+                Latest Advisory
               </th>
               <th className="text-right px-6 py-3 text-xs font-semibold text-dark-text-muted uppercase tracking-wider">
                 Actions

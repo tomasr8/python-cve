@@ -525,58 +525,84 @@ function AdvisoryList({
                 {/* Advisory Body - Only show when expanded */}
                 {isExpanded && (
                   <div className="p-4 border-t border-dark-border">
-                    {/* CVE */}
-                    {advisory.cve && (
-                      <div className="text-sm text-dark-text-muted mb-4 leading-relaxed flex items-center gap-2">
-                        <span className="text-xs bg-dark-bg border border-dark-border rounded px-2 py-1 text-dark-text-muted">
-                          <HighlightText
-                            text={advisory.cve}
-                            searchTerm={searchTerm}
-                          />
-                        </span>
-                        <button
-                          onClick={e => {
-                            e.stopPropagation()
-                            navigator.clipboard.writeText(advisory.cve)
-                            setCopiedId(advisory.cve)
-                            setTimeout(() => setCopiedId(null), 2000)
-                          }}
-                          className="p-1 rounded hover:bg-dark-border/50 transition-colors group/copy"
-                          title="Copy CVE to clipboard"
+                    <div className="flex items-center flex-wrap gap-4">
+                      {/* CVE */}
+                      {advisory.cve && (
+                        <div className="text-sm text-dark-text-muted leading-relaxed flex items-center gap-1">
+                          <span className="text-xs bg-dark-bg border border-dark-border rounded px-2 py-1 text-dark-text-muted">
+                            <HighlightText
+                              text={advisory.cve}
+                              searchTerm={searchTerm}
+                            />
+                          </span>
+                          <button
+                            onClick={e => {
+                              e.stopPropagation()
+                              navigator.clipboard.writeText(advisory.cve)
+                              setCopiedId(advisory.cve)
+                              setTimeout(() => setCopiedId(null), 2000)
+                            }}
+                            className="p-1 rounded hover:bg-dark-border/50 transition-colors group/copy"
+                            title="Copy CVE to clipboard"
+                          >
+                            {copiedId === advisory.cve ? (
+                              <svg
+                                className="w-4 h-4 text-accent-green"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M5 13l4 4L19 7"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                className="w-4 h-4 text-dark-text-muted group-hover/copy:text-python-blue transition-colors"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                />
+                              </svg>
+                            )}
+                          </button>
+                        </div>
+                      )}
+                      {/* Issue link */}
+                      {advisory.issue && (
+                        <a
+                          href={advisory.issue.url}
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs text-python-blue hover:text-python-yellow underline underline-offset-2 font-semibold transition-colors whitespace-nowrap"
                         >
-                          {copiedId === advisory.cve ? (
-                            <svg
-                              className="w-4 h-4 text-accent-green"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                          ) : (
-                            <svg
-                              className="w-4 h-4 text-dark-text-muted group-hover/copy:text-python-blue transition-colors"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                              />
-                            </svg>
-                          )}
-                        </button>
-                      </div>
-                    )}
-
+                          {advisory.issue.type === "github"
+                            ? `gh-${advisory.issue.issue_number}`
+                            : `bpo-${advisory.issue.issue_number}`}
+                          <svg
+                            className="w-3 h-3"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                            />
+                          </svg>
+                        </a>
+                      )}
+                    </div>
                     {/* Details */}
                     {advisory.details && (
                       <div
@@ -655,7 +681,7 @@ function AdvisoryList({
                     {advisory.fixed_but_not_released.length > 0 && (
                       <div className="mt-4 pt-4 border-t border-dark-border">
                         <h4 className="text-xs text-dark-text-muted uppercase tracking-wider mb-2">
-                          Fixed but not yet released
+                          Fixed but unreleased
                         </h4>
                         <div className="flex flex-wrap items-center gap-3">
                           {advisory.fixed_but_not_released.map(
