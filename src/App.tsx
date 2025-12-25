@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useMemo, useRef } from "react"
-import advisories from "virtual:combined-advisories"
+import { useState, useEffect, useMemo, useRef } from "react"
+import advisories from "virtual:advisories"
 import { last_updated } from "/src/overview.json"
 import { formatRelativeTime } from "./util"
 import { pythonVersions } from "./config"
 import Controls from "./Controls"
 import VersionOverview from "./Overview"
 import HighlightText from "./HighlightText"
-import { Version } from "./types"
+import { Advisory, Advisories, Version } from "./types"
 
 const lastUpdateDate = formatRelativeTime(last_updated)
 
@@ -123,7 +123,7 @@ function App() {
 
     // Filter by Python version
     if (isValidVersion) {
-      filtered = filtered.filter(advisory => {
+      filtered = filtered.filter((advisory: Advisory) => {
         return advisory.affected_versions.some(range => {
           if (range.length === 1) {
             return matchesVersionPrefix(parts, range[0])
@@ -145,13 +145,12 @@ function App() {
     // Filter by search term
     if (searchTerm) {
       const term = searchTerm.toLowerCase()
-      filtered = filtered.filter(advisory => {
+      filtered = filtered.filter((advisory: Advisory) => {
         const inId = advisory.id?.toLowerCase().includes(term)
         const inAliases = (advisory.cve || "").toLowerCase().includes(term)
-        const inSummary = advisory.summary?.toLowerCase().includes(term)
         const inDetails = advisory.details?.toLowerCase().includes(term)
 
-        return inId || inAliases || inDetails || inSummary
+        return inId || inAliases || inDetails
       })
     }
 
@@ -381,12 +380,12 @@ function AdvisoryList({
   searchTerm,
   displayCount,
 }: {
-  filteredAdvisories: any[]
+  filteredAdvisories: Advisories
   searchTerm: string
   displayCount: number
 }) {
   const [expandedCards, setExpandedCards] = useState(new Set())
-  const [copiedId, setCopiedId] = useState(null)
+  const [copiedId, setCopiedId] = useState<string | null>(null)
 
   // Toggle card expanded/collapsed state
   const toggleCard = (advisoryId: string) => {
@@ -456,17 +455,6 @@ function AdvisoryList({
                           </span>
                         )}
                       </div>
-
-                      {/* Summary - Show truncated when collapsed */}
-                      {!isExpanded &&
-                        (advisory.summary || advisory.details) && (
-                          <p className="text-sm text-dark-text-muted mt-2 line-clamp-1">
-                            <HighlightText
-                              text={advisory.summary || advisory.details}
-                              searchTerm={searchTerm}
-                            />
-                          </p>
-                        )}
                     </div>
 
                     <div className="hidden md:flex flex-row gap-4 md:flex-col md:gap-1 text-xs text-dark-text-muted md:text-right shrink-0">
@@ -536,11 +524,13 @@ function AdvisoryList({
                             />
                           </span>
                           <button
-                            onClick={e => {
-                              e.stopPropagation()
-                              navigator.clipboard.writeText(advisory.cve)
-                              setCopiedId(advisory.cve)
-                              setTimeout(() => setCopiedId(null), 2000)
+                            type="button"
+                            onClick={() => {
+                              if (advisory.cve) {
+                                navigator.clipboard.writeText(advisory.cve)
+                                setCopiedId(advisory.cve)
+                                setTimeout(() => setCopiedId(null), 2000)
+                              }
                             }}
                             className="p-1 rounded hover:bg-dark-border/50 transition-colors group/copy"
                             title="Copy CVE to clipboard"
