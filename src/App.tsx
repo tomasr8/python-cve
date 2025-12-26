@@ -554,7 +554,7 @@ function AdvisoryList({
                                 setTimeout(() => setCopiedId(null), 2000)
                               }
                             }}
-                            className="p-1 rounded hover:bg-dark-border/50 transition-colors group/copy"
+                            className="p-1 rounded hover:bg-dark-border/50 transition-colors group/copy cursor-pointer"
                             title="Copy CVE to clipboard"
                           >
                             {copiedId === advisory.cve ? (
