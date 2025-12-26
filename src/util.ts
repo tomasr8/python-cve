@@ -1,8 +1,4 @@
 export function formatRelativeTime(dateString: string) {
-  if (!dateString) {
-    return null
-  }
-
   const date = new Date(dateString)
   const now = new Date()
   const diffMs = now - date

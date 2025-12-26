@@ -9,7 +9,6 @@ from typing import Literal
 type Version = tuple[int, int, int]
 type Minor = tuple[int, int]
 type SeverityLevel = Literal["LOW", "MEDIUM", "HIGH", "CRITICAL"]
-# type SecurityStatus = Literal["SAFE", "AFFECTED"]
 
 
 @dataclass(frozen=True)

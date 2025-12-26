@@ -2,13 +2,16 @@ import { useState, useEffect, useMemo, useRef } from "react"
 import advisories from "virtual:advisories"
 import overview from "virtual:overview"
 import { formatRelativeTime } from "./util"
-import { pythonVersions } from "./config"
 import Controls from "./Controls"
 import VersionOverview from "./Overview"
 import HighlightText from "./HighlightText"
 import { Advisory, Advisories, Version } from "./types"
 
 const { last_updated } = overview
+const pythonVersions = [
+  "all",
+  ...overview.versions.map(v => v.version.join(".")),
+]
 
 const lastUpdateDate = formatRelativeTime(last_updated)
 

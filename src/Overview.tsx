@@ -2,11 +2,17 @@ import React, { useState } from "react"
 import overview from "virtual:overview"
 import { formatRelativeTime } from "./util"
 import { eolVersions } from "./config"
-import { VersionOverview } from "./types"
+import type { VersionStatus, VersionOverview } from "./types"
 
 const { versions } = overview
 
-export default function VersionOverviewRow({ handleViewCVEs }) {
+const statuses: VersionStatus[] = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "SAFE"]
+
+export default function VersionOverviewRow({
+  handleViewCVEs,
+}: {
+  handleViewCVEs: (version: string) => void
+}) {
   const [expandedOverviewRows, setExpandedOverviewRows] = useState(new Set())
 
   // Toggle overview row expanded/collapsed state
@@ -126,17 +132,12 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
                   {data.last_published && (
                     <span className="text-[11px] text-dark-text-muted">
                       Updated:{" "}
-                      {(() => {
-                        const formatted = formatRelativeTime(
-                          data.last_published
-                        )
-                        return formatted?.relative || ""
-                      })()}
+                      {formatRelativeTime(data.last_published).relative}
                     </span>
                   )}
                   <button
                     type="button"
-                    onClick={e => {
+                    onClick={() => {
                       handleViewCVEs(formattedVersion)
                     }}
                     className="text-xs text-python-blue hover:text-python-blue/80 font-semibold transition-colors whitespace-nowrap"
@@ -153,18 +154,9 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
                     Severity Breakdown
                   </div>
                   <div className="space-y-2">
-                    {Object.entries(rangesByStatus)
-                      .filter(([_, info]) => info.length > 0)
-                      .sort((a, b) => {
-                        const order = {
-                          CRITICAL: 0,
-                          HIGH: 1,
-                          MEDIUM: 2,
-                          LOW: 3,
-                          SAFE: 4,
-                        }
-                        return order[a[0]] - order[b[0]]
-                      })
+                    {statuses
+                      .map(status => [status, rangesByStatus[status]])
+                      .filter(([, info]) => info.length > 0)
                       .map(([severity, info]) => {
                         if (severity === "SAFE") {
                           return (
@@ -372,11 +364,11 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
                             const formatted = formatRelativeTime(
                               data.last_published
                             )
-                            return formatted ? (
+                            return (
                               <span title={formatted.full}>
                                 {formatted.relative}
                               </span>
-                            ) : null
+                            )
                           })()}
                         </div>
                       )}
@@ -404,18 +396,9 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
                           </div>
 
                           {/* Severity breakdown */}
-                          {Object.entries(rangesByStatus)
-                            .filter(([_, info]) => info.length > 0)
-                            .sort((a, b) => {
-                              const order = {
-                                CRITICAL: 0,
-                                HIGH: 1,
-                                MEDIUM: 2,
-                                LOW: 3,
-                                SAFE: 4,
-                              }
-                              return order[a[0]] - order[b[0]]
-                            })
+                          {statuses
+                            .map(status => [status, rangesByStatus[status]])
+                            .filter(([, info]) => info.length > 0)
                             .map(([severity, info]) => {
                               if (severity === "SAFE") {
                                 return (

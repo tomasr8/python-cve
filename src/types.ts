@@ -52,6 +52,7 @@ export type Version = z.infer<typeof VersionSchema>
 export type Minor = z.infer<typeof MinorVersionSchema>
 
 const VersionStatusEnum = z.enum(["SAFE", "LOW", "MEDIUM", "HIGH", "CRITICAL"])
+export type VersionStatus = z.infer<typeof VersionStatusEnum>
 
 const VersionRangeSchema = z.object({
   start: VersionSchema,

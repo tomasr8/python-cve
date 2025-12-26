@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react"
-import { pythonVersions } from "./config"
+import overview from "virtual:overview"
+
+const pythonVersions = [
+  "all",
+  ...overview.versions.map(v => v.version.join(".")),
+]
 
 function SearchStats({
   totalAdvisories,
