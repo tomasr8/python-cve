@@ -2,8 +2,14 @@ from __future__ import annotations
 
 import datetime
 import json
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, is_dataclass
 from typing import Literal
+
+
+type Version = tuple[int, int, int]
+type Minor = tuple[int, int]
+type SeverityLevel = Literal["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+# type SecurityStatus = Literal["SAFE", "AFFECTED"]
 
 
 @dataclass(frozen=True)
@@ -41,7 +47,7 @@ class Tag:
 
 @dataclass(frozen=True)
 class Severity:
-    name: str
+    name: SeverityLevel
     score: float
     version: str
 
@@ -62,8 +68,8 @@ class Advisory:
     details: str
     introduced_commits: set
     fixed_commits: set
+    # Affected versions which are not EOL (at the time of the advisory being published)
     affected_versions: set
-    affected_eol_versions: set
     fixed_in: list
     fixed_but_not_released: list
     fixes_pending: list
@@ -75,20 +81,39 @@ class AdvisoryEncoder(json.JSONEncoder):
             return sorted(o)
         if isinstance(o, datetime.datetime):
             return o.isoformat()
-        if isinstance(o, Advisory | Severity | MinorVersionOverview):
+        if is_dataclass(o):
             return asdict(o)
         return json.JSONEncoder.default(self, o)
 
 
+@dataclass(frozen=True)
+class VersionRange:
+    start: Version
+    end: Version | None = None
+
+    @property
+    def is_range(self) -> bool:
+        return self.end is not None
+
+    def __repr__(self):
+        if self.end:
+            return f"{self.start[0]}.{self.start[1]}.{self.start[2]} - {self.end[0]}.{self.end[1]}.{self.end[2]}"
+        return f"{self.start[0]}.{self.start[1]}.{self.start[2]}"
+
+
+@dataclass(frozen=True)
+class SecurityStatus:
+    range: VersionRange
+    status: Literal["SAFE"] | SeverityLevel
+
+
 @dataclass
-class MinorVersionOverview:
-    version: tuple[int, int]
+class VersionOverview:
+    version: Minor
+    latest_patch: dict = field(default_factory=dict)
     is_affected: bool = False
-    all_versions_affected: bool = False
-    severity_by_patch_version: dict[str, Severity | None] = field(default_factory=dict)
     total_advisories: int = 0
     last_published: datetime.datetime = field(
         default_factory=lambda: datetime.datetime.min.replace(tzinfo=datetime.UTC)
     )
-    affected_versions: set[tuple[int, int, int]] = field(default_factory=set)
-    safe_versions: set[tuple[int, int, int]] = field(default_factory=set)
+    status_by_patch: list[SecurityStatus] = field(default_factory=list)

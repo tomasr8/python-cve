@@ -6,12 +6,8 @@ declare module "virtual:advisories" {
   export default advisories
 }
 
-declare module "/src/overview.json" {
-  interface Overview {
-    last_updated: string
-    [key: string]: any
-  }
-
+declare module "virtual:overview" {
+  import { Overview } from "./types"
   const overview: Overview
   export default overview
 }

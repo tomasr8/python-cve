@@ -28,9 +28,6 @@ const AdvisorySchema = z.object({
   affected_versions: z.array(
     z.union([z.tuple([VersionSchema]), z.tuple([VersionSchema, VersionSchema])])
   ),
-  affected_eol_versions: z.array(
-    z.union([z.tuple([VersionSchema]), z.tuple([VersionSchema, VersionSchema])])
-  ),
   fixed_in: z.array(
     z.object({
       version: VersionSchema,
@@ -53,3 +50,30 @@ export type Advisories = z.infer<typeof AdvisoriesSchema>
 
 export type Version = z.infer<typeof VersionSchema>
 export type Minor = z.infer<typeof MinorVersionSchema>
+
+const VersionStatusEnum = z.enum(["SAFE", "LOW", "MEDIUM", "HIGH", "CRITICAL"])
+
+const VersionStatusSchema = z.object({
+  range: z.object({ start: VersionSchema, end: VersionSchema.nullable() }),
+  status: VersionStatusEnum,
+})
+
+const VersionOverviewSchema = z.object({
+  version: MinorVersionSchema,
+  latest_patch: z.object({
+    version: VersionSchema,
+    status: VersionStatusEnum,
+  }),
+  is_affected: z.boolean(),
+  total_advisories: z.number(),
+  last_published: z.string(),
+  status_by_patch: z.array(VersionStatusSchema),
+})
+
+export const OverviewSchema = z.object({
+  last_updated: z.string(),
+  versions: z.array(VersionOverviewSchema),
+})
+
+export type VersionOverview = z.infer<typeof VersionOverviewSchema>
+export type Overview = z.infer<typeof OverviewSchema>

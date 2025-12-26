@@ -3,7 +3,9 @@ import react from "@vitejs/plugin-react"
 import fs from "fs"
 import path from "path"
 import { z } from "zod"
-import { AdvisoriesSchema } from "./src/types"
+import { AdvisoriesSchema, OverviewSchema } from "./src/types"
+
+const srcDir = path.resolve(__dirname, "src")
 
 // Plugin to merge advisories.json with manual_overrides.json
 function mergeAdvisoriesPlugin() {
@@ -21,7 +23,6 @@ function mergeAdvisoriesPlugin() {
 
     load(id) {
       if (id === resolvedVirtualModuleId) {
-        const srcDir = path.resolve(__dirname, "src")
         const advisoriesPath = path.join(srcDir, "advisories.json")
         const overridesPath = path.join(srcDir, "manual_overrides.json")
 
@@ -46,7 +47,7 @@ function mergeAdvisoriesPlugin() {
         if (!result.success) {
           // This will show in the terminal and fail the build/dev server
           throw new Error(
-            `Advisories validation failed:\n${z.treeifyError(result.error)}`
+            `Advisories validation failed:\n${JSON.stringify(z.treeifyError(result.error), null, 2)}`
           )
         }
 
@@ -81,6 +82,39 @@ function mergeAdvisoriesPlugin() {
   }
 }
 
+// Plugin to import and validate overview.json
+function importOverviewPlugin() {
+  const virtualModuleId = "virtual:overview"
+  const resolvedVirtualModuleId = "\0" + virtualModuleId
+
+  return {
+    name: "import-overview",
+
+    resolveId(id) {
+      if (id === virtualModuleId) {
+        return resolvedVirtualModuleId
+      }
+    },
+
+    load(id) {
+      if (id === resolvedVirtualModuleId) {
+        const overviewPath = path.join(srcDir, "overview.json")
+        const overview = JSON.parse(fs.readFileSync(overviewPath, "utf-8"))
+
+        // Validate the overview
+        const result = OverviewSchema.safeParse(overview)
+        if (!result.success) {
+          throw new Error(
+            `Overview validation failed:\n${JSON.stringify(z.treeifyError(result.error), null, 2)}`
+          )
+        }
+
+        return `export default ${JSON.stringify(overview)}`
+      }
+    },
+  }
+}
+
 // Deep merge utility
 function deepMerge(target, source) {
   const result = { ...target }
@@ -100,5 +134,5 @@ function deepMerge(target, source) {
 
 export default defineConfig({
   base: "/python-cve/",
-  plugins: [react(), mergeAdvisoriesPlugin()],
+  plugins: [react(), mergeAdvisoriesPlugin(), importOverviewPlugin()],
 })

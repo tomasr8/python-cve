@@ -1,13 +1,12 @@
 import datetime
 import json
 import re
-from dataclasses import asdict
+from collections import defaultdict
 
 from pythoncve.cve import fetch_cve_data, get_affected_versions, get_severity
-from pythoncve.models import Advisory, Branch, MinorVersionOverview, Tag
+from pythoncve.models import Advisory, Branch, SecurityStatus, Tag, VersionOverview, VersionRange
 from pythoncve.util import ADVISORY_REPO, CPYTHON_REPO, FIRST_COMMIT
 from pythoncve.versions import (
-    compress_patch_versions_into_ranges,
     compute_ancestry_branch,
     compute_ancestry_optimized,
     get_latest_active_patch_versions,
@@ -90,7 +89,6 @@ def parse_advisory(data: dict) -> Advisory:
         introduced_commits=introduced_commits,
         fixed_commits=fixed_commits,
         affected_versions=set(),
-        affected_eol_versions=set(),
         fixed_in=[],
         fixed_but_not_released=[],
         fixes_pending=[],
@@ -171,13 +169,13 @@ def parse_advisories(tags: set[Tag], branches: set[Branch]) -> list[Advisory]:
         advisory.fixes_pending = sorted(pending_minors)
 
         # Filter out EOL versions
-        advisory.affected_eol_versions = {
+        affected_eol_versions = {
             v
             for v in advisory.affected_versions
             if is_version_eol((v[0], v[1], 0), advisory.published)
         }
 
-        advisory.affected_versions -= advisory.affected_eol_versions
+        advisory.affected_versions -= affected_eol_versions
 
         advisory.fixed_in.sort(key=lambda x: x["version"])
         advisory.fixed_but_not_released.sort(key=lambda x: x["branch"])
@@ -193,48 +191,68 @@ def parse_advisories(tags: set[Tag], branches: set[Branch]) -> list[Advisory]:
     return advisories
 
 
+SEVERITY_ORDER = {"CRITICAL": 4, "HIGH": 3, "MEDIUM": 2, "LOW": 1}
+
+
 def get_version_overview(advisories: list[Advisory], tags: set[Tag]):
     latest = get_latest_active_patch_versions(tags)
-    affected = {v: MinorVersionOverview(version=v) for v in latest}
+    affected = {
+        v: VersionOverview(version=v, latest_patch={"version": t.version})
+        for v, t in latest.items()
+    }
+    severities: dict[tuple[int, int], dict[int, str]] = defaultdict(dict)
 
     for advisory in advisories:
-        minors = {v[:2] for v in advisory.affected_versions}
-        for minor in minors:
+        affected_minors = {version[:2] for version in advisory.affected_versions}
+        for minor in affected_minors:
             if minor in affected:
                 affected[minor].is_affected = True
                 affected[minor].total_advisories += 1
-                pub_dt = advisory.published
-                affected[minor].last_published = max(affected[minor].last_published, pub_dt)
+                affected[minor].last_published = max(
+                    affected[minor].last_published, advisory.published
+                )
+
         for version in advisory.affected_versions:
-            if version[:2] in affected:
-                affected[version[:2]].affected_versions.add(version)
-        # for version in advisory.fixed_versions:
-        #     if version[:2] in affected:
-        #         affected[version[:2]]["safe_versions"].add(version)
-    for v in latest:
-        all_patch_versions = {tag.version for tag in tags if tag.version[:2] == v}
-        affected[v[:2]].safe_versions = all_patch_versions - affected[v[:2]].affected_versions
+            minor = version[:2]
+            if minor in affected and advisory.severity:
+                patch_severity = severities[minor].get(version[2])
+                if not patch_severity or (
+                    SEVERITY_ORDER[advisory.severity.name] > SEVERITY_ORDER[patch_severity]
+                ):
+                    severities[minor][version[2]] = advisory.severity.name
 
-    for k, value in affected.items():
-        tags_in_minor = [tag for tag in tags if tag.version[:2] == k]
-        versions_in_minor = {tag.version for tag in tags_in_minor}
-        if value.is_affected and versions_in_minor == set(value.affected_versions):
-            value.all_versions_affected = True
+    for minor, data in affected.items():
+        statuses = []
+        for patch in range(latest[minor].version[2] + 1):
+            if patch in severities[minor]:
+                statuses.append(severities[minor][patch])
+            else:
+                statuses.append("SAFE")
 
-        value.affected_versions = compress_patch_versions_into_ranges(value.affected_versions)
+        status = statuses[0]
+        start = minor + (0,)
+        end = minor + (0,)
+        _statuses = []
+        for patch, curr_status in enumerate(statuses[1:], start=1):
+            if curr_status == status:
+                end = minor + (patch,)
+            if curr_status != status:
+                _statuses.append(
+                    SecurityStatus(
+                        range=VersionRange(start=start, end=end if start != end else None),
+                        status=status,
+                    )
+                )
+                start = minor + (patch,)
+                end = minor + (patch,)
+                status = curr_status
+        _statuses.append(
+            SecurityStatus(
+                range=VersionRange(start=start, end=end if start != end else None),
+                status=status,
+            )
+        )
+        data.status_by_patch = _statuses
+        data.latest_patch["status"] = _statuses[-1].status
 
-        value.safe_versions = compress_patch_versions_into_ranges(value.safe_versions)
-
-        # Get the highest severity per patch version
-        severity_by_patch = {}
-        for advisory in advisories:
-            for version in advisory.affected_versions:
-                if version[:2] == k and advisory.severity:
-                    existing = severity_by_patch.get(version)
-                    if not existing or advisory.severity.score > existing.score:
-                        severity_by_patch[version] = advisory.severity
-        affected[k].severity_by_patch_version = {
-            f"{v[0]}.{v[1]}.{v[2]}": asdict(s) for v, s in severity_by_patch.items()
-        }
-
-    return {f"{k[0]}.{k[1]}": v for k, v in affected.items()}
+    return sorted(affected.values(), key=lambda x: x.version, reverse=True)
