@@ -1,5 +1,3 @@
-import { Version } from "./types"
-
 export function formatRelativeTime(dateString: string) {
   if (!dateString) {
     return null
@@ -42,44 +40,4 @@ export function formatRelativeTime(dateString: string) {
       minute: "2-digit",
     }),
   }
-}
-
-export function compressPatchVersions(versions: Version[]): string[] {
-  if (versions.length === 0) {
-    return []
-  }
-
-  const sorted = versions.slice().sort((a, b) => {
-    if (a[0] !== b[0]) {
-      return a[0] - b[0]
-    }
-    if (a[1] !== b[1]) {
-      return a[1] - b[1]
-    }
-    return a[2] - b[2]
-  })
-  const ranges = []
-  let start = sorted[0]
-  let end = sorted[0]
-  for (let i = 1; i < sorted.length; i++) {
-    if (sorted[i][2] === end[2] + 1) {
-      end = sorted[i]
-    } else {
-      if (start[2] === end[2]) {
-        ranges.push(`${start[0]}.${start[1]}.${start[2]}`)
-      } else {
-        ranges.push(
-          `${start[0]}.${start[1]}.${start[2]} – ${end[0]}.${end[1]}.${end[2]}`
-        )
-      }
-    }
-  }
-  if (start[2] === end[2]) {
-    ranges.push(`${start[0]}.${start[1]}.${start[2]}`)
-  } else {
-    ranges.push(
-      `${start[0]}.${start[1]}.${start[2]} – ${end[0]}.${end[1]}.${end[2]}`
-    )
-  }
-  return ranges
 }
