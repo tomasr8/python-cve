@@ -428,27 +428,29 @@ function AdvisoryList({
                   <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 md:gap-4 justify-between md:justify-start">
-                        <svg
-                          className={`w-4 h-4 text-dark-text-muted transition-transform shrink-0 ${
-                            isExpanded ? "rotate-90" : ""
-                          }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                        <h3 className="text-lg font-bold text-python-blue font-mono">
-                          <HighlightText
-                            text={advisory.id}
-                            searchTerm={searchTerm}
-                          />
-                        </h3>
+                        <div className="flex items-center gap-2 md:gap-4">
+                          <svg
+                            className={`w-4 h-4 text-dark-text-muted transition-transform shrink-0 ${
+                              isExpanded ? "rotate-90" : ""
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                          <h3 className="text-lg font-bold text-python-blue font-mono">
+                            <HighlightText
+                              text={advisory.id}
+                              searchTerm={searchTerm}
+                            />
+                          </h3>
+                        </div>
                         {advisory.severity && (
                           <span
                             className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs ${

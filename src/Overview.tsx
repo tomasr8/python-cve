@@ -172,7 +172,7 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
                               key={severity}
                               className="flex items-center gap-2 text-sm"
                             >
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold bg-accent-green/10 text-accent-green border border-accent-green/30">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold min-w-[90px] bg-accent-green/10 text-accent-green border border-accent-green/30">
                                 <svg
                                   className="w-2.5 h-2.5"
                                   fill="none"
@@ -217,7 +217,7 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
                             className="flex items-center gap-2 text-sm"
                           >
                             <span
-                              className={`px-2 py-0.5 rounded text-[11px] font-bold ${
+                              className={`px-2 py-0.5 rounded text-[11px] font-bold min-w-[90px] ${
                                 severity === "CRITICAL"
                                   ? "bg-accent-red/20 text-accent-red border border-accent-red/30"
                                   : severity === "HIGH"
