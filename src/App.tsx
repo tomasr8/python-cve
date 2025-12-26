@@ -13,6 +13,7 @@ const pythonVersions = [
   ...overview.versions.map(v => v.version.join(".")),
 ]
 
+const DEFAULT_VISIBLE_COUNT = 40
 const lastUpdateDate = formatRelativeTime(last_updated)
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
     }
     return "published_date_newest"
   })
-  const [displayCount, setDisplayCount] = useState(50)
+  const [displayCount, setDisplayCount] = useState(DEFAULT_VISIBLE_COUNT)
   const advisoriesControls = useRef<HTMLDivElement>(null)
   const [versionInputValue, setVersionInputValue] = useState(() => {
     const params = new URLSearchParams(window.location.search)
@@ -221,7 +222,7 @@ function App() {
 
   // Reset display count when filters change
   useEffect(() => {
-    setDisplayCount(50)
+    setDisplayCount(DEFAULT_VISIBLE_COUNT)
   }, [selectedVersion, searchTerm, sortBy])
 
   return (

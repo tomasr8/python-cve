@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", "Monaco", monospace;
 
   --color-dark-bg: #0a0e14;
   --color-dark-surface: #141820;
@@ -13,10 +21,10 @@
   --color-accent-green: #6cbf43;
   --color-accent-red: #f07178;
   --color-accent-yellow: #ffb454;
-  --color-python-blue: #4B8BBE;
+  --color-python-blue: #4b8bbe;
   --color-python-blue-dark: #306998;
-  --color-python-yellow: #FFD43B;
-  --color-python-yellow-light: #FFE873;
+  --color-python-yellow: #ffd43b;
+  --color-python-yellow-light: #ffe873;
 }
 
 body {
