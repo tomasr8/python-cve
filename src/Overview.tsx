@@ -140,7 +140,7 @@ export default function VersionOverviewRow({
                     onClick={() => {
                       handleViewCVEs(formattedVersion)
                     }}
-                    className="text-xs text-python-blue hover:text-python-blue/80 font-semibold transition-colors whitespace-nowrap"
+                    className="text-xs text-python-blue hover:text-python-blue/80 font-semibold transition-colors whitespace-nowrap cursor-pointer"
                   >
                     View CVEs →
                   </button>
@@ -379,7 +379,7 @@ export default function VersionOverviewRow({
                     >
                       <button
                         onClick={() => handleViewCVEs(formattedVersion)}
-                        className="text-xs text-python-blue hover:text-python-yellow transition-colors font-semibold uppercase tracking-wider"
+                        className="text-xs text-python-blue hover:text-python-yellow transition-colors font-semibold uppercase tracking-wider cursor-pointer"
                       >
                         View CVEs →
                       </button>
