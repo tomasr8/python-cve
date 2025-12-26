@@ -37,13 +37,7 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
           const isExpanded = expandedOverviewRows.has(formattedVersion)
           const latestVersion = data.latest_patch.version
           const latestStatus = data.latest_patch.status
-          const versionsByStatus = data.status_by_patch.reduce((acc, entry) => {
-            if (!acc[entry.status]) {
-              acc[entry.status] = []
-            }
-            acc[entry.status].push(entry.range)
-            return acc
-          }, {})
+          const rangesByStatus = data.ranges_by_status
 
           return (
             <div
@@ -159,7 +153,8 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
                     Severity Breakdown
                   </div>
                   <div className="space-y-2">
-                    {Object.entries(versionsByStatus)
+                    {Object.entries(rangesByStatus)
+                      .filter(([_, info]) => info.length > 0)
                       .sort((a, b) => {
                         const order = {
                           CRITICAL: 0,
@@ -291,16 +286,7 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
               const isExpanded = expandedOverviewRows.has(formattedVersion)
               const latestVersion = data.latest_patch.version
               const latestStatus = data.latest_patch.status
-              const versionsByStatus = data.status_by_patch.reduce(
-                (acc, entry) => {
-                  if (!acc[entry.status]) {
-                    acc[entry.status] = []
-                  }
-                  acc[entry.status].push(entry.range)
-                  return acc
-                },
-                {}
-              )
+              const rangesByStatus = data.ranges_by_status
 
               return (
                 <React.Fragment key={formattedVersion}>
@@ -418,7 +404,8 @@ export default function VersionOverviewRow({ handleViewCVEs }) {
                           </div>
 
                           {/* Severity breakdown */}
-                          {Object.entries(versionsByStatus)
+                          {Object.entries(rangesByStatus)
+                            .filter(([_, info]) => info.length > 0)
                             .sort((a, b) => {
                               const order = {
                                 CRITICAL: 0,

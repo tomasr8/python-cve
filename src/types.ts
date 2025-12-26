@@ -53,9 +53,9 @@ export type Minor = z.infer<typeof MinorVersionSchema>
 
 const VersionStatusEnum = z.enum(["SAFE", "LOW", "MEDIUM", "HIGH", "CRITICAL"])
 
-const VersionStatusSchema = z.object({
-  range: z.object({ start: VersionSchema, end: VersionSchema.nullable() }),
-  status: VersionStatusEnum,
+const VersionRangeSchema = z.object({
+  start: VersionSchema,
+  end: VersionSchema.nullable(),
 })
 
 const VersionOverviewSchema = z.object({
@@ -67,7 +67,13 @@ const VersionOverviewSchema = z.object({
   is_affected: z.boolean(),
   total_advisories: z.number(),
   last_published: z.string(),
-  status_by_patch: z.array(VersionStatusSchema),
+  ranges_by_status: z.object({
+    SAFE: z.array(VersionRangeSchema),
+    LOW: z.array(VersionRangeSchema),
+    MEDIUM: z.array(VersionRangeSchema),
+    HIGH: z.array(VersionRangeSchema),
+    CRITICAL: z.array(VersionRangeSchema),
+  }),
 })
 
 export const OverviewSchema = z.object({

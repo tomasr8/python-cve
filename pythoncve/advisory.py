@@ -252,7 +252,21 @@ def get_version_overview(advisories: list[Advisory], tags: set[Tag]):
                 status=status,
             )
         )
-        data.status_by_patch = _statuses
+
+        ranges_by_status = {
+            "SAFE": [],
+            "LOW": [],
+            "MEDIUM": [],
+            "HIGH": [],
+            "CRITICAL": [],
+        }
+
+        for status in ranges_by_status:
+            for s in _statuses:
+                if s.status == status:
+                    ranges_by_status[status].append(s.range)
+
         data.latest_patch["status"] = _statuses[-1].status
+        data.ranges_by_status = ranges_by_status
 
     return sorted(affected.values(), key=lambda x: x.version, reverse=True)

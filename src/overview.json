@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-12-26T13:32:28+00:00",
+  "last_updated": "2025-12-26T16:57:37+00:00",
   "versions": [
     {
       "version": [
@@ -17,9 +17,20 @@
       "is_affected": true,
       "total_advisories": 5,
       "last_published": "2025-12-03T18:55:32.222000+00:00",
-      "status_by_patch": [
-        {
-          "range": {
+      "ranges_by_status": {
+        "SAFE": [
+          {
+            "start": [
+              3,
+              14,
+              2
+            ],
+            "end": null
+          }
+        ],
+        "LOW": [],
+        "MEDIUM": [
+          {
             "start": [
               3,
               14,
@@ -30,21 +41,11 @@
               14,
               1
             ]
-          },
-          "status": "MEDIUM"
-        },
-        {
-          "range": {
-            "start": [
-              3,
-              14,
-              2
-            ],
-            "end": null
-          },
-          "status": "SAFE"
-        }
-      ]
+          }
+        ],
+        "HIGH": [],
+        "CRITICAL": []
+      }
     },
     {
       "version": [
@@ -62,39 +63,20 @@
       "is_affected": true,
       "total_advisories": 17,
       "last_published": "2025-12-03T18:55:32.222000+00:00",
-      "status_by_patch": [
-        {
-          "range": {
+      "ranges_by_status": {
+        "SAFE": [],
+        "LOW": [
+          {
             "start": [
               3,
               13,
-              0
+              11
             ],
-            "end": [
-              3,
-              13,
-              3
-            ]
-          },
-          "status": "CRITICAL"
-        },
-        {
-          "range": {
-            "start": [
-              3,
-              13,
-              4
-            ],
-            "end": [
-              3,
-              13,
-              5
-            ]
-          },
-          "status": "HIGH"
-        },
-        {
-          "range": {
+            "end": null
+          }
+        ],
+        "MEDIUM": [
+          {
             "start": [
               3,
               13,
@@ -105,21 +87,37 @@
               13,
               10
             ]
-          },
-          "status": "MEDIUM"
-        },
-        {
-          "range": {
+          }
+        ],
+        "HIGH": [
+          {
             "start": [
               3,
               13,
-              11
+              4
             ],
-            "end": null
-          },
-          "status": "LOW"
-        }
-      ]
+            "end": [
+              3,
+              13,
+              5
+            ]
+          }
+        ],
+        "CRITICAL": [
+          {
+            "start": [
+              3,
+              13,
+              0
+            ],
+            "end": [
+              3,
+              13,
+              3
+            ]
+          }
+        ]
+      }
     },
     {
       "version": [
@@ -137,9 +135,31 @@
       "is_affected": true,
       "total_advisories": 29,
       "last_published": "2025-12-03T18:55:32.222000+00:00",
-      "status_by_patch": [
-        {
-          "range": {
+      "ranges_by_status": {
+        "SAFE": [],
+        "LOW": [],
+        "MEDIUM": [
+          {
+            "start": [
+              3,
+              12,
+              12
+            ],
+            "end": null
+          }
+        ],
+        "HIGH": [
+          {
+            "start": [
+              3,
+              12,
+              11
+            ],
+            "end": null
+          }
+        ],
+        "CRITICAL": [
+          {
             "start": [
               3,
               12,
@@ -150,32 +170,9 @@
               12,
               10
             ]
-          },
-          "status": "CRITICAL"
-        },
-        {
-          "range": {
-            "start": [
-              3,
-              12,
-              11
-            ],
-            "end": null
-          },
-          "status": "HIGH"
-        },
-        {
-          "range": {
-            "start": [
-              3,
-              12,
-              12
-            ],
-            "end": null
-          },
-          "status": "MEDIUM"
-        }
-      ]
+          }
+        ]
+      }
     },
     {
       "version": [
@@ -193,9 +190,31 @@
       "is_affected": true,
       "total_advisories": 34,
       "last_published": "2025-12-03T18:55:32.222000+00:00",
-      "status_by_patch": [
-        {
-          "range": {
+      "ranges_by_status": {
+        "SAFE": [],
+        "LOW": [],
+        "MEDIUM": [
+          {
+            "start": [
+              3,
+              11,
+              14
+            ],
+            "end": null
+          }
+        ],
+        "HIGH": [
+          {
+            "start": [
+              3,
+              11,
+              13
+            ],
+            "end": null
+          }
+        ],
+        "CRITICAL": [
+          {
             "start": [
               3,
               11,
@@ -206,32 +225,9 @@
               11,
               12
             ]
-          },
-          "status": "CRITICAL"
-        },
-        {
-          "range": {
-            "start": [
-              3,
-              11,
-              13
-            ],
-            "end": null
-          },
-          "status": "HIGH"
-        },
-        {
-          "range": {
-            "start": [
-              3,
-              11,
-              14
-            ],
-            "end": null
-          },
-          "status": "MEDIUM"
-        }
-      ]
+          }
+        ]
+      }
     },
     {
       "version": [
@@ -249,9 +245,31 @@
       "is_affected": true,
       "total_advisories": 39,
       "last_published": "2025-12-03T18:55:32.222000+00:00",
-      "status_by_patch": [
-        {
-          "range": {
+      "ranges_by_status": {
+        "SAFE": [],
+        "LOW": [],
+        "MEDIUM": [
+          {
+            "start": [
+              3,
+              10,
+              19
+            ],
+            "end": null
+          }
+        ],
+        "HIGH": [
+          {
+            "start": [
+              3,
+              10,
+              18
+            ],
+            "end": null
+          }
+        ],
+        "CRITICAL": [
+          {
             "start": [
               3,
               10,
@@ -262,32 +280,9 @@
               10,
               17
             ]
-          },
-          "status": "CRITICAL"
-        },
-        {
-          "range": {
-            "start": [
-              3,
-              10,
-              18
-            ],
-            "end": null
-          },
-          "status": "HIGH"
-        },
-        {
-          "range": {
-            "start": [
-              3,
-              10,
-              19
-            ],
-            "end": null
-          },
-          "status": "MEDIUM"
-        }
-      ]
+          }
+        ]
+      }
     }
   ]
 }

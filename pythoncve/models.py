@@ -116,4 +116,4 @@ class VersionOverview:
     last_published: datetime.datetime = field(
         default_factory=lambda: datetime.datetime.min.replace(tzinfo=datetime.UTC)
     )
-    status_by_patch: list[SecurityStatus] = field(default_factory=list)
+    ranges_by_status: dict[str, list[VersionRange]] = field(default_factory=dict)

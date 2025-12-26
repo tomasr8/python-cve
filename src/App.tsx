@@ -10,7 +10,6 @@ import { Advisory, Advisories, Version } from "./types"
 
 const { last_updated } = overview
 
-
 const lastUpdateDate = formatRelativeTime(last_updated)
 
 function App() {
@@ -149,7 +148,7 @@ function App() {
     if (searchTerm) {
       const term = searchTerm.toLowerCase()
       filtered = filtered.filter((advisory: Advisory) => {
-        const inId = advisory.id?.toLowerCase().includes(term)
+        const inId = advisory.id.toLowerCase().includes(term)
         const inAliases = (advisory.cve || "").toLowerCase().includes(term)
         const inDetails = advisory.details?.toLowerCase().includes(term)
 
@@ -426,9 +425,24 @@ function AdvisoryList({
                   className="p-4 bg-dark-bg/50 cursor-pointer"
                   onClick={() => toggleCard(advisory.id)}
                 >
-                  <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-4">
+                  <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
                     <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-2 justify-between md:justify-start">
+                      <div className="flex flex-wrap items-center gap-2 md:gap-4 justify-between md:justify-start">
+                        <svg
+                          className={`w-4 h-4 text-dark-text-muted transition-transform shrink-0 ${
+                            isExpanded ? "rotate-90" : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
                         <h3 className="text-lg font-bold text-python-blue font-mono">
                           <HighlightText
                             text={advisory.id}
@@ -460,7 +474,7 @@ function AdvisoryList({
                       </div>
                     </div>
 
-                    <div className="hidden md:flex flex-row gap-4 md:flex-col md:gap-1 text-xs text-dark-text-muted md:text-right shrink-0">
+                    <div className="hidden md:flex flex-row gap-4 md:flex-row md:gap-4 text-xs text-dark-text-muted md:text-right shrink-0">
                       {advisory.published && (
                         <div>
                           <span className="text-[10px] uppercase tracking-wider">
