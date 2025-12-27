@@ -177,8 +177,8 @@ function App() {
     }
 
     // Sort advisories
-    const severityOrder = { critical: 4, high: 3, medium: 2, low: 1 }
-    const sorted = [...filtered].sort((a, b) => {
+    const severityOrder = { CRITICAL: 4, HIGH: 3, MEDIUM: 2, LOW: 1 }
+    const sorted = [...filtered].sort((a: Advisory, b: Advisory) => {
       if (sortBy === "published_date_newest") {
         return new Date(b.published) - new Date(a.published)
       } else if (sortBy === "published_date_oldest") {
@@ -188,15 +188,45 @@ function App() {
       } else if (sortBy === "modified_date_oldest") {
         return new Date(a.modified) - new Date(b.modified)
       } else if (sortBy === "severity_highest") {
-        return (
-          (severityOrder[b.severity?.name?.toLowerCase()] ?? -1) -
-          (severityOrder[a.severity?.name?.toLowerCase()] ?? -1)
-        )
+        if (!a.severity && !b.severity) {
+          return 0
+        }
+        if (!a.severity) {
+          return 1
+        }
+        if (!b.severity) {
+          return -1
+        }
+
+        const sevA = a.severity.name
+        const sevB = b.severity.name
+        if (sevA == sevB) {
+          const scoreA = a.severity.score || 0
+          const scoreB = b.severity.score || 0
+          return scoreB - scoreA
+        }
+
+        return severityOrder[sevB] - severityOrder[sevA]
       } else if (sortBy === "severity_lowest") {
-        return (
-          (severityOrder[a.severity?.name?.toLowerCase()] ?? -1) -
-          (severityOrder[b.severity?.name?.toLowerCase()] ?? -1)
-        )
+        if (!a.severity && !b.severity) {
+          return 0
+        }
+        if (!a.severity) {
+          return -1
+        }
+        if (!b.severity) {
+          return 1
+        }
+
+        const sevA = a.severity.name
+        const sevB = b.severity.name
+        if (sevA == sevB) {
+          const scoreA = a.severity.score || 0
+          const scoreB = b.severity.score || 0
+          return scoreA - scoreB
+        }
+
+        return severityOrder[sevA] - severityOrder[sevB]
       }
       return 0
     })
