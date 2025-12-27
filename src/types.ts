@@ -29,7 +29,7 @@ const AdvisorySchema = z.object({
   fixed_in: z.array(
     z.object({
       version: VersionSchema,
-      commit: z.string(),
+      commits: z.array(z.string()),
     })
   ),
   fixed_but_not_released: z.array(

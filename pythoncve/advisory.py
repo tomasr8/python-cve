@@ -4,7 +4,15 @@ import re
 from collections import defaultdict
 
 from pythoncve.cve import fetch_cve_data, get_affected_versions, get_severity
-from pythoncve.models import Advisory, Branch, SecurityStatus, Tag, VersionOverview, VersionRange
+from pythoncve.models import (
+    Advisory,
+    Branch,
+    SecurityStatus,
+    Tag,
+    Version,
+    VersionOverview,
+    VersionRange,
+)
 from pythoncve.util import ADVISORY_REPO, CPYTHON_REPO, FIRST_COMMIT
 from pythoncve.versions import (
     compute_ancestry_branch,
@@ -150,6 +158,18 @@ def parse_advisories(tags: set[Tag], branches: set[Branch]) -> list[Advisory]:
                     advisory.fixed_but_not_released.append(
                         {"branch": br_fixed.version, "commit": commit}
                     )
+
+        # Group fixed_in by version (each version can have multiple fixed commits)
+        fixed_in_grouped: dict[Version, list[str]] = {}
+        for entry in advisory.fixed_in:
+            version = entry["version"]
+            if version not in fixed_in_grouped:
+                fixed_in_grouped[version] = []
+            fixed_in_grouped[version].append(entry["commit"])
+        advisory.fixed_in = [
+            {"version": version, "commits": sorted(fixed_in_grouped[version])}
+            for version in fixed_in_grouped
+        ]
 
         if affected_versions_from_api:
             advisory.affected_versions = affected_versions_from_api
