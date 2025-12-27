@@ -51,7 +51,7 @@ function App() {
     return "published_date_newest"
   })
   const [displayCount, setDisplayCount] = useState(DEFAULT_VISIBLE_COUNT)
-  const advisoriesControls = useRef<HTMLDivElement>(null)
+  const advisoriesControls = useRef<HTMLFormElement>(null)
   const [versionInputValue, setVersionInputValue] = useState(() => {
     const params = new URLSearchParams(window.location.search)
     const v = params.get("version")

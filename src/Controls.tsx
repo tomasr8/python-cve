@@ -44,7 +44,7 @@ function SearchField({
         Search
       </label>
       <input
-        type="text"
+        type="search"
         value={searchInput}
         onChange={e => setSearchInput(e.target.value)}
         placeholder="CVE-2024-1234, id, description..."
@@ -106,7 +106,7 @@ export default function Controls({
   totalAdvisories,
   shownAdvisories,
 }: {
-  advisoriesControls: React.RefObject<HTMLDivElement>
+  advisoriesControls: React.RefObject<HTMLFormElement>
   searchInput: string
   setSearchInput: (value: string) => void
   versionInputValue: string
@@ -213,7 +213,9 @@ export default function Controls({
   }
 
   return (
-    <div
+    <form
+      role="search"
+      aria-label="Filter advisories"
       ref={advisoriesControls}
       className="scroll-mt-4 bg-dark-surface border border-dark-border p-6 rounded mb-6"
     >
@@ -304,6 +306,10 @@ export default function Controls({
         totalAdvisories={totalAdvisories}
         shownAdvisories={shownAdvisories}
       />
-    </div>
+
+      <button type="submit" hidden>
+        Submit
+      </button>
+    </form>
   )
 }
