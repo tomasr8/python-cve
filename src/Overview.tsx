@@ -283,7 +283,7 @@ export default function VersionOverviewRow({
               return (
                 <React.Fragment key={formattedVersion}>
                   <tr
-                    className={`border-b border-dark-border hover:bg-dark-bg/30 transition-colors ${
+                    className={`not-last:border-b border-dark-border hover:bg-dark-bg/30 transition-colors ${
                       isEOL ? "opacity-75" : ""
                     } ${isExpanded ? "bg-dark-bg/20" : ""}`}
                     onClick={() => toggleOverviewRow(formattedVersion)}
@@ -388,7 +388,7 @@ export default function VersionOverviewRow({
 
                   {/* Expanded Detail Row */}
                   {isExpanded && (
-                    <tr className="border-b border-dark-border bg-dark-bg/10">
+                    <tr className="not-last:border-b border-dark-border bg-dark-bg/10">
                       <td colSpan={4} className="px-6 py-4">
                         <div className="ml-7 space-y-3">
                           <div className="text-xs font-semibold text-dark-text-muted uppercase tracking-wider mb-2">
