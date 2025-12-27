@@ -218,6 +218,7 @@ export default function Controls({
       aria-label="Filter advisories"
       ref={advisoriesControls}
       className="scroll-mt-4 bg-dark-surface border border-dark-border p-6 rounded mb-6"
+      onSubmit={e => e.preventDefault()}
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <SearchField
