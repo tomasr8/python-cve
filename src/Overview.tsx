@@ -137,7 +137,8 @@ export default function VersionOverviewRow({
                   )}
                   <button
                     type="button"
-                    onClick={() => {
+                    onClick={e => {
+                      e.stopPropagation()
                       handleViewCVEs(formattedVersion)
                     }}
                     className="text-xs text-python-blue hover:text-python-blue/80 font-semibold transition-colors whitespace-nowrap cursor-pointer"
