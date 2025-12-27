@@ -23,8 +23,6 @@ const AdvisorySchema = z.object({
   severity: SeveritySchema.nullable(),
   issue: IssueSchema.nullable(),
   details: z.string(),
-  introduced_commits: z.array(z.string()),
-  fixed_commits: z.array(z.string()),
   affected_versions: z.array(
     z.union([z.tuple([VersionSchema]), z.tuple([VersionSchema, VersionSchema])])
   ),

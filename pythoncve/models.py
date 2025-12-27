@@ -80,6 +80,11 @@ class AdvisoryEncoder(json.JSONEncoder):
             return sorted(o)
         if isinstance(o, datetime.datetime):
             return o.isoformat()
+        if isinstance(o, Advisory):
+            obj = asdict(o)
+            obj.pop("introduced_commits")
+            obj.pop("fixed_commits")
+            return obj
         if is_dataclass(o):
             return asdict(o)
         return json.JSONEncoder.default(self, o)
