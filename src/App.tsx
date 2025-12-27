@@ -153,10 +153,26 @@ function App() {
       const term = searchTerm.toLowerCase()
       filtered = filtered.filter((advisory: Advisory) => {
         const inId = advisory.id.toLowerCase().includes(term)
-        const inAliases = (advisory.cve || "").toLowerCase().includes(term)
-        const inDetails = advisory.details?.toLowerCase().includes(term)
+        if (inId) {
+          return true
+        }
 
-        return inId || inAliases || inDetails
+        const inAliases = (advisory.cve || "").toLowerCase().includes(term)
+        if (inAliases) {
+          return true
+        }
+
+        if (advisory.issue) {
+          const formattedIssue = `${
+            advisory.issue.type === "github" ? "gh" : "bpo"
+          }-${advisory.issue.issue_number}`
+          if (formattedIssue.includes(term)) {
+            return true
+          }
+        }
+
+        const inDetails = advisory.details?.toLowerCase().includes(term)
+        return inDetails
       })
     }
 
@@ -597,9 +613,14 @@ function AdvisoryList({
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 text-xs text-python-blue hover:text-python-yellow underline underline-offset-2 font-semibold transition-colors whitespace-nowrap"
                         >
-                          {advisory.issue.type === "github"
-                            ? `gh-${advisory.issue.issue_number}`
-                            : `bpo-${advisory.issue.issue_number}`}
+                          <HighlightText
+                            text={
+                              advisory.issue.type === "github"
+                                ? `gh-${advisory.issue.issue_number}`
+                                : `bpo-${advisory.issue.issue_number}`
+                            }
+                            searchTerm={searchTerm}
+                          />
                           <svg
                             className="w-3 h-3"
                             fill="none"
