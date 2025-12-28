@@ -494,7 +494,7 @@ function AdvisoryList({
                               d="M9 5l7 7-7 7"
                             />
                           </svg>
-                          <h3 className="text-lg font-bold text-python-blue font-mono">
+                          <h3 className="text-lg font-bold text-python-blue font-mono md:min-w-[7.5rem]">
                             <HighlightText
                               text={advisory.id}
                               searchTerm={searchTerm}
