@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-01-20T18:10:36+00:00",
+  "last_updated": "2026-01-21T00:25:31+00:00",
   "versions": [
     {
       "version": [
@@ -12,22 +12,13 @@
           14,
           2
         ],
-        "status": "SAFE"
+        "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 5,
-      "last_published": "2025-12-03T18:55:32.222000+00:00",
+      "total_advisories": 11,
+      "last_published": "2026-01-20T21:52:33+00:00",
       "ranges_by_status": {
-        "SAFE": [
-          {
-            "start": [
-              3,
-              14,
-              2
-            ],
-            "end": null
-          }
-        ],
+        "SAFE": [],
         "LOW": [],
         "MEDIUM": [
           {
@@ -39,7 +30,7 @@
             "end": [
               3,
               14,
-              1
+              2
             ]
           }
         ],
@@ -58,23 +49,14 @@
           13,
           11
         ],
-        "status": "LOW"
+        "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 17,
-      "last_published": "2025-12-03T18:55:32.222000+00:00",
+      "total_advisories": 23,
+      "last_published": "2026-01-20T21:52:33+00:00",
       "ranges_by_status": {
         "SAFE": [],
-        "LOW": [
-          {
-            "start": [
-              3,
-              13,
-              11
-            ],
-            "end": null
-          }
-        ],
+        "LOW": [],
         "MEDIUM": [
           {
             "start": [
@@ -85,7 +67,7 @@
             "end": [
               3,
               13,
-              10
+              11
             ]
           }
         ],
@@ -133,8 +115,8 @@
         "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 29,
-      "last_published": "2025-12-03T18:55:32.222000+00:00",
+      "total_advisories": 35,
+      "last_published": "2026-01-20T21:52:33+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -188,8 +170,8 @@
         "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 34,
-      "last_published": "2025-12-03T18:55:32.222000+00:00",
+      "total_advisories": 40,
+      "last_published": "2026-01-20T21:52:33+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -243,8 +225,8 @@
         "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 39,
-      "last_published": "2025-12-03T18:55:32.222000+00:00",
+      "total_advisories": 45,
+      "last_published": "2026-01-20T21:52:33+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
