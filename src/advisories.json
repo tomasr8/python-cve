@@ -16095,21 +16095,14 @@
           3,
           13
         ],
-        "commit": "e91c11449cad34bac3ea55ee09ca557691d92b53"
+        "commit": "a696ba8b4d42fd632afc9bc88ad830a2e4cceed8"
       },
       {
         "branch": [
           3,
           13
         ],
-        "commit": "a696ba8b4d42fd632afc9bc88ad830a2e4cceed8"
-      },
-      {
-        "branch": [
-          3,
-          14
-        ],
-        "commit": "41f468786762348960486c166833a218a0a436af"
+        "commit": "e91c11449cad34bac3ea55ee09ca557691d92b53"
       },
       {
         "branch": [
@@ -16117,6 +16110,13 @@
           14
         ],
         "commit": "27648a1818749ef44c420afe6173af6868715437"
+      },
+      {
+        "branch": [
+          3,
+          14
+        ],
+        "commit": "41f468786762348960486c166833a218a0a436af"
       }
     ],
     "fixes_pending": [
@@ -16762,5 +16762,108 @@
       }
     ],
     "fixes_pending": []
+  },
+  {
+    "id": "PSF-2026-7",
+    "cve": "CVE-2025-12781",
+    "published": "2026-01-21T19:34:47+00:00",
+    "modified": "2026-01-21T19:38:08+00:00",
+    "severity": {
+      "name": "MEDIUM",
+      "score": 6.3,
+      "version": "4.0"
+    },
+    "issue": {
+      "type": "github",
+      "url": "https://github.com/python/cpython/issues/125346",
+      "issue_number": "125346"
+    },
+    "details": "When passing data to the b64decode(), standard_b64decode(), and urlsafe_b64decode() functions in the \"base64\" module the characters \"+/\" will always be accepted, regardless of the value of \"altchars\" parameter, typically used to establish an \"alternative base64 alphabet\" such as the URL safe alphabet. This behavior matches what is recommended in earlier base64 RFCs, but newer RFCs now recommend either dropping characters outside the specified base64 alphabet or raising an error. The old behavior has the possibility of causing data integrity issues.\n\n\n\n\nThis behavior can only be insecure if your application uses an alternate base64 alphabet (without \"+/\"). If your application does not use the \"altchars\" parameter or the urlsafe_b64decode() function, then your application does not use an alternative base64 alphabet.\n\n\n\n\nThe attached patches DOES NOT make the base64-decode behavior raise an error, as this would be a change in behavior and break existing programs. Instead, the patch deprecates the behavior which will be replaced with the newly recommended behavior in a future version of Python.\u00a0Users are recommended to mitigate by verifying user-controlled inputs match the base64 \nalphabet they are expecting or verify that their application would not be \naffected if the b64decode() functions accepted \"+\" or \"/\" outside of altchars.",
+    "affected_versions": [
+      [
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          3,
+          10,
+          19
+        ]
+      ],
+      [
+        [
+          3,
+          11,
+          0
+        ],
+        [
+          3,
+          11,
+          14
+        ]
+      ],
+      [
+        [
+          3,
+          12,
+          0
+        ],
+        [
+          3,
+          12,
+          12
+        ]
+      ],
+      [
+        [
+          3,
+          13,
+          0
+        ],
+        [
+          3,
+          13,
+          11
+        ]
+      ],
+      [
+        [
+          3,
+          14,
+          0
+        ],
+        [
+          3,
+          14,
+          2
+        ]
+      ]
+    ],
+    "fixed_in": [],
+    "fixed_but_not_released": [],
+    "fixes_pending": [
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        3,
+        14
+      ]
+    ]
   }
 ]
