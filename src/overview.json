@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-01-23T00:24:43+00:00",
+  "last_updated": "2026-01-23T06:10:12+00:00",
   "versions": [
     {
       "version": [
@@ -16,7 +16,7 @@
       },
       "is_affected": true,
       "total_advisories": 12,
-      "last_published": "2026-01-21T19:34:47+00:00",
+      "last_published": "2026-01-21T19:34:47.979000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -53,7 +53,7 @@
       },
       "is_affected": true,
       "total_advisories": 24,
-      "last_published": "2026-01-21T19:34:47+00:00",
+      "last_published": "2026-01-21T19:34:47.979000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -116,7 +116,7 @@
       },
       "is_affected": true,
       "total_advisories": 36,
-      "last_published": "2026-01-21T19:34:47+00:00",
+      "last_published": "2026-01-21T19:34:47.979000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -171,7 +171,7 @@
       },
       "is_affected": true,
       "total_advisories": 41,
-      "last_published": "2026-01-21T19:34:47+00:00",
+      "last_published": "2026-01-21T19:34:47.979000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -226,7 +226,7 @@
       },
       "is_affected": true,
       "total_advisories": 46,
-      "last_published": "2026-01-21T19:34:47+00:00",
+      "last_published": "2026-01-21T19:34:47.979000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],

@@ -16095,14 +16095,14 @@
           3,
           13
         ],
-        "commit": "a696ba8b4d42fd632afc9bc88ad830a2e4cceed8"
+        "commit": "e91c11449cad34bac3ea55ee09ca557691d92b53"
       },
       {
         "branch": [
           3,
           13
         ],
-        "commit": "e91c11449cad34bac3ea55ee09ca557691d92b53"
+        "commit": "a696ba8b4d42fd632afc9bc88ad830a2e4cceed8"
       },
       {
         "branch": [
@@ -16766,8 +16766,8 @@
   {
     "id": "PSF-2026-7",
     "cve": "CVE-2025-12781",
-    "published": "2026-01-21T19:34:47+00:00",
-    "modified": "2026-01-21T19:38:08+00:00",
+    "published": "2026-01-21T19:34:47.979000+00:00",
+    "modified": "2026-01-22T20:12:56.421000+00:00",
     "severity": {
       "name": "MEDIUM",
       "score": 6.3,
@@ -16836,7 +16836,28 @@
         ]
       ]
     ],
-    "fixed_in": [],
+    "fixed_in": [
+      {
+        "version": [
+          3,
+          13,
+          10
+        ],
+        "commits": [
+          "1be80bec7960f5ccd059e75f3dfbd45fca302947"
+        ]
+      },
+      {
+        "version": [
+          3,
+          14,
+          1
+        ],
+        "commits": [
+          "fd17ee026fa9b67f6288cbafe374a3e479fe03a5"
+        ]
+      }
+    ],
     "fixed_but_not_released": [],
     "fixes_pending": [
       [
@@ -16850,14 +16871,6 @@
       [
         3,
         12
-      ],
-      [
-        3,
-        13
-      ],
-      [
-        3,
-        14
       ]
     ]
   }
