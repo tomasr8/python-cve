@@ -15756,7 +15756,7 @@
     "id": "PSF-2025-14",
     "cve": "CVE-2025-13836",
     "published": "2025-12-01T18:02:38.483000+00:00",
-    "modified": "2025-12-22T20:03:45.491000+00:00",
+    "modified": "2026-01-26T14:18:39.099000+00:00",
     "severity": {
       "name": "MEDIUM",
       "score": 6.3,
@@ -15851,21 +15851,26 @@
       {
         "branch": [
           3,
+          10
+        ],
+        "commit": "5dc101675fd22918facbbe0fecdc821502beaaf0"
+      },
+      {
+        "branch": [
+          3,
+          11
+        ],
+        "commit": "afc40bdd3dd71f343fd9016f6d8eebbacbd6587c"
+      },
+      {
+        "branch": [
+          3,
           12
         ],
         "commit": "14b1fdb0a94b96f86fc7b86671ea9582b8676628"
       }
     ],
-    "fixes_pending": [
-      [
-        3,
-        10
-      ],
-      [
-        3,
-        11
-      ]
-    ]
+    "fixes_pending": []
   },
   {
     "id": "PSF-2025-15",
@@ -15986,7 +15991,7 @@
     "id": "PSF-2025-16",
     "cve": "CVE-2025-12084",
     "published": "2025-12-03T18:55:32.222000+00:00",
-    "modified": "2026-01-14T18:58:12.978000+00:00",
+    "modified": "2026-01-26T14:18:29.104000+00:00",
     "severity": {
       "name": "MEDIUM",
       "score": 6.3,
@@ -16086,6 +16091,20 @@
       {
         "branch": [
           3,
+          10
+        ],
+        "commit": "c97e87593063d84a2bd9fe7068b30eb44de23dc0"
+      },
+      {
+        "branch": [
+          3,
+          11
+        ],
+        "commit": "a46c10ec9d4050ab67b8a932e0859a2ea60c3cb8"
+      },
+      {
+        "branch": [
+          3,
           12
         ],
         "commit": "9c9dda6625a2a90d2a06c657eee021d6be19842d"
@@ -16119,22 +16138,13 @@
         "commit": "27648a1818749ef44c420afe6173af6868715437"
       }
     ],
-    "fixes_pending": [
-      [
-        3,
-        10
-      ],
-      [
-        3,
-        11
-      ]
-    ]
+    "fixes_pending": []
   },
   {
     "id": "PSF-2026-1",
     "cve": "CVE-2025-11468",
-    "published": "2026-01-20T21:09:11+00:00",
-    "modified": "2026-01-20T22:27:28+00:00",
+    "published": "2026-01-20T21:09:11.229000+00:00",
+    "modified": "2026-01-26T14:18:18.136000+00:00",
     "severity": {
       "name": "MEDIUM",
       "score": 5.7,
@@ -16209,7 +16219,29 @@
       ]
     ],
     "fixed_in": [],
-    "fixed_but_not_released": [],
+    "fixed_but_not_released": [
+      {
+        "branch": [
+          3,
+          11
+        ],
+        "commit": "e9970f077240c7c670e8a6fc6662f2b30d3b6ad0"
+      },
+      {
+        "branch": [
+          3,
+          13
+        ],
+        "commit": "f738386838021c762efea6c9802c82de65e87796"
+      },
+      {
+        "branch": [
+          3,
+          14
+        ],
+        "commit": "61614a5e5056e4f61ced65008d4576f3df34acb6"
+      }
+    ],
     "fixes_pending": [
       [
         3,
@@ -16217,19 +16249,7 @@
       ],
       [
         3,
-        11
-      ],
-      [
-        3,
         12
-      ],
-      [
-        3,
-        13
-      ],
-      [
-        3,
-        14
       ]
     ]
   },
@@ -16237,7 +16257,7 @@
     "id": "PSF-2026-2",
     "cve": "CVE-2025-15282",
     "published": "2026-01-20T21:35:13.865000+00:00",
-    "modified": "2026-01-23T16:33:19.308000+00:00",
+    "modified": "2026-01-26T14:18:51.450000+00:00",
     "severity": {
       "name": "MEDIUM",
       "score": 6,
@@ -16316,29 +16336,40 @@
       {
         "branch": [
           3,
+          10
+        ],
+        "commit": "34d76b00dabde81a793bd06dd8ecb057838c4b38"
+      },
+      {
+        "branch": [
+          3,
+          11
+        ],
+        "commit": "3f396ca9d7bbe2a50ea6b8c9b27c0082884d9f80"
+      },
+      {
+        "branch": [
+          3,
+          12
+        ],
+        "commit": "4ed11d3cd288e6b90196a15c5a825a45d318fe47"
+      },
+      {
+        "branch": [
+          3,
+          13
+        ],
+        "commit": "a35ca3be5842505dab74dc0b90b89cde0405017a"
+      },
+      {
+        "branch": [
+          3,
           14
         ],
         "commit": "05356b1cc153108aaf27f3b72ce438af4aa218c0"
       }
     ],
-    "fixes_pending": [
-      [
-        3,
-        10
-      ],
-      [
-        3,
-        11
-      ],
-      [
-        3,
-        12
-      ],
-      [
-        3,
-        13
-      ]
-    ]
+    "fixes_pending": []
   },
   {
     "id": "PSF-2026-3",
@@ -16550,7 +16581,7 @@
     "id": "PSF-2026-5",
     "cve": "CVE-2026-0672",
     "published": "2026-01-20T21:52:33.925000+00:00",
-    "modified": "2026-01-23T16:34:25.762000+00:00",
+    "modified": "2026-01-26T14:20:10.421000+00:00",
     "severity": {
       "name": "MEDIUM",
       "score": 6,
@@ -16629,29 +16660,40 @@
       {
         "branch": [
           3,
+          10
+        ],
+        "commit": "7852d72b653fea0199acf5fc2a84f6f8b84eba8d"
+      },
+      {
+        "branch": [
+          3,
+          11
+        ],
+        "commit": "b1869ff648bbee0717221d09e6deff46617f3e85"
+      },
+      {
+        "branch": [
+          3,
+          12
+        ],
+        "commit": "62700107418eb2cca3fc88da036a243ea975f172"
+      },
+      {
+        "branch": [
+          3,
+          13
+        ],
+        "commit": "918387e4912d12ffc166c8f2a38df92b6ec756ca"
+      },
+      {
+        "branch": [
+          3,
           14
         ],
         "commit": "712452e6f1d4b9f7f8c4c92ebfcaac1705faa440"
       }
     ],
-    "fixes_pending": [
-      [
-        3,
-        10
-      ],
-      [
-        3,
-        11
-      ],
-      [
-        3,
-        12
-      ],
-      [
-        3,
-        13
-      ]
-    ]
+    "fixes_pending": []
   },
   {
     "id": "PSF-2026-6",
@@ -16885,8 +16927,8 @@
   {
     "id": "PSF-2026-8",
     "cve": "CVE-2026-1299",
-    "published": "2026-01-23T16:27:13+00:00",
-    "modified": "2026-01-23T16:56:22+00:00",
+    "published": "2026-01-23T16:27:13.346000+00:00",
+    "modified": "2026-01-26T14:20:21.976000+00:00",
     "severity": {
       "name": "MEDIUM",
       "score": 6,
@@ -16961,27 +17003,40 @@
       ]
     ],
     "fixed_in": [],
-    "fixed_but_not_released": [],
+    "fixed_but_not_released": [
+      {
+        "branch": [
+          3,
+          10
+        ],
+        "commit": "8cdf6204f4ae821f32993f8fc6bad0d318f95f36"
+      },
+      {
+        "branch": [
+          3,
+          11
+        ],
+        "commit": "842ce19a0c0b58d61591e8f6a708c38db1fb94e4"
+      },
+      {
+        "branch": [
+          3,
+          13
+        ],
+        "commit": "0a925ab591c45d6638f37b5e57796f36fa0e56d8"
+      },
+      {
+        "branch": [
+          3,
+          14
+        ],
+        "commit": "7877fe424415bc4a13045e62a90a7277413d8cb9"
+      }
+    ],
     "fixes_pending": [
       [
         3,
-        10
-      ],
-      [
-        3,
-        11
-      ],
-      [
-        3,
         12
-      ],
-      [
-        3,
-        13
-      ],
-      [
-        3,
-        14
       ]
     ]
   }
