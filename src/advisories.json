@@ -16114,14 +16114,14 @@
           3,
           13
         ],
-        "commit": "a696ba8b4d42fd632afc9bc88ad830a2e4cceed8"
+        "commit": "e91c11449cad34bac3ea55ee09ca557691d92b53"
       },
       {
         "branch": [
           3,
           13
         ],
-        "commit": "e91c11449cad34bac3ea55ee09ca557691d92b53"
+        "commit": "a696ba8b4d42fd632afc9bc88ad830a2e4cceed8"
       },
       {
         "branch": [
@@ -16144,7 +16144,7 @@
     "id": "PSF-2026-1",
     "cve": "CVE-2025-11468",
     "published": "2026-01-20T21:09:11.229000+00:00",
-    "modified": "2026-01-26T14:18:18.136000+00:00",
+    "modified": "2026-02-02T21:56:06.614000+00:00",
     "severity": {
       "name": "MEDIUM",
       "score": 5.7,
@@ -16230,6 +16230,13 @@
       {
         "branch": [
           3,
+          12
+        ],
+        "commit": "a76e4cd62dd68e7cbe86e37e6ed988495a646b66"
+      },
+      {
+        "branch": [
+          3,
           13
         ],
         "commit": "f738386838021c762efea6c9802c82de65e87796"
@@ -16246,10 +16253,6 @@
       [
         3,
         10
-      ],
-      [
-        3,
-        12
       ]
     ]
   },
