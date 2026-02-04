@@ -14173,7 +14173,7 @@
         [
           3,
           13,
-          11
+          12
         ]
       ]
     ],
@@ -16079,11 +16079,33 @@
       {
         "version": [
           3,
+          13,
+          12
+        ],
+        "commits": [
+          "a696ba8b4d42fd632afc9bc88ad830a2e4cceed8",
+          "e91c11449cad34bac3ea55ee09ca557691d92b53"
+        ]
+      },
+      {
+        "version": [
+          3,
           14,
           2
         ],
         "commits": [
           "027f21e417b26eed4505ac2db101a4352b7c51a0"
+        ]
+      },
+      {
+        "version": [
+          3,
+          14,
+          3
+        ],
+        "commits": [
+          "27648a1818749ef44c420afe6173af6868715437",
+          "41f468786762348960486c166833a218a0a436af"
         ]
       }
     ],
@@ -16108,34 +16130,6 @@
           12
         ],
         "commit": "9c9dda6625a2a90d2a06c657eee021d6be19842d"
-      },
-      {
-        "branch": [
-          3,
-          13
-        ],
-        "commit": "a696ba8b4d42fd632afc9bc88ad830a2e4cceed8"
-      },
-      {
-        "branch": [
-          3,
-          13
-        ],
-        "commit": "e91c11449cad34bac3ea55ee09ca557691d92b53"
-      },
-      {
-        "branch": [
-          3,
-          14
-        ],
-        "commit": "27648a1818749ef44c420afe6173af6868715437"
-      },
-      {
-        "branch": [
-          3,
-          14
-        ],
-        "commit": "41f468786762348960486c166833a218a0a436af"
       }
     ],
     "fixes_pending": []
@@ -16218,7 +16212,28 @@
         ]
       ]
     ],
-    "fixed_in": [],
+    "fixed_in": [
+      {
+        "version": [
+          3,
+          13,
+          12
+        ],
+        "commits": [
+          "f738386838021c762efea6c9802c82de65e87796"
+        ]
+      },
+      {
+        "version": [
+          3,
+          14,
+          3
+        ],
+        "commits": [
+          "61614a5e5056e4f61ced65008d4576f3df34acb6"
+        ]
+      }
+    ],
     "fixed_but_not_released": [
       {
         "branch": [
@@ -16233,20 +16248,6 @@
           12
         ],
         "commit": "a76e4cd62dd68e7cbe86e37e6ed988495a646b66"
-      },
-      {
-        "branch": [
-          3,
-          13
-        ],
-        "commit": "f738386838021c762efea6c9802c82de65e87796"
-      },
-      {
-        "branch": [
-          3,
-          14
-        ],
-        "commit": "61614a5e5056e4f61ced65008d4576f3df34acb6"
       }
     ],
     "fixes_pending": [
@@ -16334,7 +16335,28 @@
         ]
       ]
     ],
-    "fixed_in": [],
+    "fixed_in": [
+      {
+        "version": [
+          3,
+          13,
+          12
+        ],
+        "commits": [
+          "a35ca3be5842505dab74dc0b90b89cde0405017a"
+        ]
+      },
+      {
+        "version": [
+          3,
+          14,
+          3
+        ],
+        "commits": [
+          "05356b1cc153108aaf27f3b72ce438af4aa218c0"
+        ]
+      }
+    ],
     "fixed_but_not_released": [
       {
         "branch": [
@@ -16356,20 +16378,6 @@
           12
         ],
         "commit": "4ed11d3cd288e6b90196a15c5a825a45d318fe47"
-      },
-      {
-        "branch": [
-          3,
-          13
-        ],
-        "commit": "a35ca3be5842505dab74dc0b90b89cde0405017a"
-      },
-      {
-        "branch": [
-          3,
-          14
-        ],
-        "commit": "05356b1cc153108aaf27f3b72ce438af4aa218c0"
       }
     ],
     "fixes_pending": []
@@ -16436,7 +16444,7 @@
         [
           3,
           13,
-          11
+          12
         ]
       ],
       [
@@ -16448,7 +16456,7 @@
         [
           3,
           14,
-          2
+          3
         ]
       ]
     ],
@@ -16539,7 +16547,7 @@
         [
           3,
           13,
-          11
+          12
         ]
       ],
       [
@@ -16551,7 +16559,7 @@
         [
           3,
           14,
-          2
+          3
         ]
       ]
     ],
@@ -16658,7 +16666,28 @@
         ]
       ]
     ],
-    "fixed_in": [],
+    "fixed_in": [
+      {
+        "version": [
+          3,
+          13,
+          12
+        ],
+        "commits": [
+          "918387e4912d12ffc166c8f2a38df92b6ec756ca"
+        ]
+      },
+      {
+        "version": [
+          3,
+          14,
+          3
+        ],
+        "commits": [
+          "712452e6f1d4b9f7f8c4c92ebfcaac1705faa440"
+        ]
+      }
+    ],
     "fixed_but_not_released": [
       {
         "branch": [
@@ -16680,20 +16709,6 @@
           12
         ],
         "commit": "62700107418eb2cca3fc88da036a243ea975f172"
-      },
-      {
-        "branch": [
-          3,
-          13
-        ],
-        "commit": "918387e4912d12ffc166c8f2a38df92b6ec756ca"
-      },
-      {
-        "branch": [
-          3,
-          14
-        ],
-        "commit": "712452e6f1d4b9f7f8c4c92ebfcaac1705faa440"
       }
     ],
     "fixes_pending": []
@@ -16776,7 +16791,28 @@
         ]
       ]
     ],
-    "fixed_in": [],
+    "fixed_in": [
+      {
+        "version": [
+          3,
+          13,
+          12
+        ],
+        "commits": [
+          "22e4d55285cee52bc4dbe061324e5f30bd4dee58"
+        ]
+      },
+      {
+        "version": [
+          3,
+          14,
+          3
+        ],
+        "commits": [
+          "23e3c0ae867cca0130e441e776c9955b9027c510"
+        ]
+      }
+    ],
     "fixed_but_not_released": [
       {
         "branch": [
@@ -16798,20 +16834,6 @@
           12
         ],
         "commit": "4802b96a2cde58570c24c13ef3289490980961c5"
-      },
-      {
-        "branch": [
-          3,
-          13
-        ],
-        "commit": "22e4d55285cee52bc4dbe061324e5f30bd4dee58"
-      },
-      {
-        "branch": [
-          3,
-          14
-        ],
-        "commit": "23e3c0ae867cca0130e441e776c9955b9027c510"
       }
     ],
     "fixes_pending": []
@@ -17005,7 +17027,28 @@
         ]
       ]
     ],
-    "fixed_in": [],
+    "fixed_in": [
+      {
+        "version": [
+          3,
+          13,
+          12
+        ],
+        "commits": [
+          "0a925ab591c45d6638f37b5e57796f36fa0e56d8"
+        ]
+      },
+      {
+        "version": [
+          3,
+          14,
+          3
+        ],
+        "commits": [
+          "7877fe424415bc4a13045e62a90a7277413d8cb9"
+        ]
+      }
+    ],
     "fixed_but_not_released": [
       {
         "branch": [
@@ -17020,20 +17063,6 @@
           11
         ],
         "commit": "842ce19a0c0b58d61591e8f6a708c38db1fb94e4"
-      },
-      {
-        "branch": [
-          3,
-          13
-        ],
-        "commit": "0a925ab591c45d6638f37b5e57796f36fa0e56d8"
-      },
-      {
-        "branch": [
-          3,
-          14
-        ],
-        "commit": "7877fe424415bc4a13045e62a90a7277413d8cb9"
       }
     ],
     "fixes_pending": [
