@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-02-11T12:20:50+00:00",
+  "last_updated": "2026-02-11T18:25:01+00:00",
   "versions": [
     {
       "version": [
@@ -12,13 +12,22 @@
           14,
           3
         ],
-        "status": "MEDIUM"
+        "status": "SAFE"
       },
       "is_affected": true,
       "total_advisories": 13,
       "last_published": "2026-01-23T16:27:13.346000+00:00",
       "ranges_by_status": {
-        "SAFE": [],
+        "SAFE": [
+          {
+            "start": [
+              3,
+              14,
+              3
+            ],
+            "end": null
+          }
+        ],
         "LOW": [],
         "MEDIUM": [
           {
@@ -30,7 +39,7 @@
             "end": [
               3,
               14,
-              3
+              2
             ]
           }
         ],
@@ -49,14 +58,23 @@
           13,
           12
         ],
-        "status": "MEDIUM"
+        "status": "LOW"
       },
       "is_affected": true,
       "total_advisories": 25,
       "last_published": "2026-01-23T16:27:13.346000+00:00",
       "ranges_by_status": {
         "SAFE": [],
-        "LOW": [],
+        "LOW": [
+          {
+            "start": [
+              3,
+              13,
+              12
+            ],
+            "end": null
+          }
+        ],
         "MEDIUM": [
           {
             "start": [
@@ -67,7 +85,7 @@
             "end": [
               3,
               13,
-              12
+              11
             ]
           }
         ],
