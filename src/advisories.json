@@ -17280,5 +17280,108 @@
         12
       ]
     ]
+  },
+  {
+    "id": "PSF-2026-10",
+    "cve": "CVE-2025-13462",
+    "published": "2026-03-12T17:59:26.620000+00:00",
+    "modified": "2026-03-12T19:09:51.230000+00:00",
+    "severity": {
+      "name": "LOW",
+      "score": 2,
+      "version": "4.0"
+    },
+    "issue": {
+      "type": "github",
+      "url": "https://github.com/python/cpython/issues/141707",
+      "issue_number": "141707"
+    },
+    "details": "The \"tarfile\" module would still apply normalization of AREGTYPE (\\x00) blocks to DIRTYPE, even while processing a multi-block member such as GNUTYPE_LONGNAME or GNUTYPE_LONGLINK. This could result in a crafted tar archive being misinterpreted by the tarfile module compared to other implementations.",
+    "affected_versions": [
+      [
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          3,
+          10,
+          20
+        ]
+      ],
+      [
+        [
+          3,
+          11,
+          0
+        ],
+        [
+          3,
+          11,
+          15
+        ]
+      ],
+      [
+        [
+          3,
+          12,
+          0
+        ],
+        [
+          3,
+          12,
+          13
+        ]
+      ],
+      [
+        [
+          3,
+          13,
+          0
+        ],
+        [
+          3,
+          13,
+          12
+        ]
+      ],
+      [
+        [
+          3,
+          14,
+          0
+        ],
+        [
+          3,
+          14,
+          3
+        ]
+      ]
+    ],
+    "fixed_in": [],
+    "fixed_but_not_released": [],
+    "fixes_pending": [
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        3,
+        14
+      ]
+    ]
   }
 ]
