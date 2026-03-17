@@ -17383,5 +17383,225 @@
         14
       ]
     ]
+  },
+  {
+    "id": "PSF-2026-11",
+    "cve": "CVE-2026-3644",
+    "published": "2026-03-16T17:37:31.344000+00:00",
+    "modified": "2026-03-16T18:25:55.021000+00:00",
+    "severity": {
+      "name": "MEDIUM",
+      "score": 6,
+      "version": "4.0"
+    },
+    "issue": {
+      "type": "github",
+      "url": "https://github.com/python/cpython/issues/145599",
+      "issue_number": "145599"
+    },
+    "details": "The fix for CVE-2026-0672, which rejected control characters in http.cookies.Morsel, was incomplete. The Morsel.update(), |= operator, and unpickling paths were not patched, allowing control characters to bypass input validation. Additionally, BaseCookie.js_output() lacked the output validation applied to BaseCookie.output().",
+    "affected_versions": [
+      [
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          3,
+          10,
+          20
+        ]
+      ],
+      [
+        [
+          3,
+          11,
+          0
+        ],
+        [
+          3,
+          11,
+          15
+        ]
+      ],
+      [
+        [
+          3,
+          12,
+          0
+        ],
+        [
+          3,
+          12,
+          13
+        ]
+      ],
+      [
+        [
+          3,
+          13,
+          0
+        ],
+        [
+          3,
+          13,
+          12
+        ]
+      ],
+      [
+        [
+          3,
+          14,
+          0
+        ],
+        [
+          3,
+          14,
+          3
+        ]
+      ]
+    ],
+    "fixed_in": [],
+    "fixed_but_not_released": [
+      {
+        "branch": [
+          3,
+          13
+        ],
+        "commit": "d16ecc6c3626f0e2cc8f08c309c83934e8a979dd"
+      },
+      {
+        "branch": [
+          3,
+          14
+        ],
+        "commit": "62ceb396fcbe69da1ded3702de586f4072b590dd"
+      }
+    ],
+    "fixes_pending": [
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        3,
+        12
+      ]
+    ]
+  },
+  {
+    "id": "PSF-2026-12",
+    "cve": "CVE-2026-4224",
+    "published": "2026-03-16T17:52:26.639000+00:00",
+    "modified": "2026-03-16T18:21:11.567000+00:00",
+    "severity": {
+      "name": "MEDIUM",
+      "score": 6,
+      "version": "4.0"
+    },
+    "issue": {
+      "type": "github",
+      "url": "https://github.com/python/cpython/issues/145986",
+      "issue_number": "145986"
+    },
+    "details": "When an Expat parser with a registered ElementDeclHandler parses an inline\ndocument type definition containing a deeply nested content model a C stack\noverflow occurs.",
+    "affected_versions": [
+      [
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          3,
+          10,
+          20
+        ]
+      ],
+      [
+        [
+          3,
+          11,
+          0
+        ],
+        [
+          3,
+          11,
+          15
+        ]
+      ],
+      [
+        [
+          3,
+          12,
+          0
+        ],
+        [
+          3,
+          12,
+          13
+        ]
+      ],
+      [
+        [
+          3,
+          13,
+          0
+        ],
+        [
+          3,
+          13,
+          12
+        ]
+      ],
+      [
+        [
+          3,
+          14,
+          0
+        ],
+        [
+          3,
+          14,
+          3
+        ]
+      ]
+    ],
+    "fixed_in": [],
+    "fixed_but_not_released": [
+      {
+        "branch": [
+          3,
+          13
+        ],
+        "commit": "196edfb06a7458377d4d0f4b3cd41724c1f3bd4a"
+      },
+      {
+        "branch": [
+          3,
+          14
+        ],
+        "commit": "e0a8a6da90597a924b300debe045cdb4628ee1f3"
+      }
+    ],
+    "fixes_pending": [
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        3,
+        12
+      ]
+    ]
   }
 ]
