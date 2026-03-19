@@ -17603,5 +17603,108 @@
         12
       ]
     ]
+  },
+  {
+    "id": "PSF-2026-13",
+    "cve": "CVE-2026-3479",
+    "published": "2026-03-18T18:13:42.288000+00:00",
+    "modified": "2026-03-18T18:50:41.609000+00:00",
+    "severity": {
+      "name": "LOW",
+      "score": 2.1,
+      "version": "4.0"
+    },
+    "issue": {
+      "type": "github",
+      "url": "https://github.com/python/cpython/issues/146121",
+      "issue_number": "146121"
+    },
+    "details": "pkgutil.get_data() did not validate the resource argument as documented, allowing path traversals.",
+    "affected_versions": [
+      [
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          3,
+          10,
+          20
+        ]
+      ],
+      [
+        [
+          3,
+          11,
+          0
+        ],
+        [
+          3,
+          11,
+          15
+        ]
+      ],
+      [
+        [
+          3,
+          12,
+          0
+        ],
+        [
+          3,
+          12,
+          13
+        ]
+      ],
+      [
+        [
+          3,
+          13,
+          0
+        ],
+        [
+          3,
+          13,
+          12
+        ]
+      ],
+      [
+        [
+          3,
+          14,
+          0
+        ],
+        [
+          3,
+          14,
+          3
+        ]
+      ]
+    ],
+    "fixed_in": [],
+    "fixed_but_not_released": [],
+    "fixes_pending": [
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        3,
+        14
+      ]
+    ]
   }
 ]

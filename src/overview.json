@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-19T00:30:53+00:00",
+  "last_updated": "2026-03-19T06:25:55+00:00",
   "versions": [
     {
       "version": [
@@ -15,8 +15,8 @@
         "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 17,
-      "last_published": "2026-03-16T17:52:26.639000+00:00",
+      "total_advisories": 18,
+      "last_published": "2026-03-18T18:13:42.288000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -52,8 +52,8 @@
         "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 29,
-      "last_published": "2026-03-16T17:52:26.639000+00:00",
+      "total_advisories": 30,
+      "last_published": "2026-03-18T18:13:42.288000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -115,8 +115,8 @@
         "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 41,
-      "last_published": "2026-03-16T17:52:26.639000+00:00",
+      "total_advisories": 42,
+      "last_published": "2026-03-18T18:13:42.288000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -174,8 +174,8 @@
         "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 46,
-      "last_published": "2026-03-16T17:52:26.639000+00:00",
+      "total_advisories": 47,
+      "last_published": "2026-03-18T18:13:42.288000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
@@ -233,8 +233,8 @@
         "status": "MEDIUM"
       },
       "is_affected": true,
-      "total_advisories": 51,
-      "last_published": "2026-03-16T17:52:26.639000+00:00",
+      "total_advisories": 52,
+      "last_published": "2026-03-18T18:13:42.288000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
