@@ -17713,5 +17713,108 @@
         14
       ]
     ]
+  },
+  {
+    "id": "PSF-2026-14",
+    "cve": "CVE-2026-4519",
+    "published": "2026-03-20T15:08:32.576000+00:00",
+    "modified": "2026-03-20T20:07:08.244000+00:00",
+    "severity": {
+      "name": "HIGH",
+      "score": 7,
+      "version": "4.0"
+    },
+    "issue": {
+      "type": "github",
+      "url": "https://github.com/python/cpython/issues/143930",
+      "issue_number": "143930"
+    },
+    "details": "The webbrowser.open() API would accept leading dashes in the URL which \ncould be handled as command line options for certain web browsers. New \nbehavior rejects leading dashes. Users are recommended to sanitize URLs \nprior to passing to webbrowser.open().",
+    "affected_versions": [
+      [
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          3,
+          10,
+          20
+        ]
+      ],
+      [
+        [
+          3,
+          11,
+          0
+        ],
+        [
+          3,
+          11,
+          15
+        ]
+      ],
+      [
+        [
+          3,
+          12,
+          0
+        ],
+        [
+          3,
+          12,
+          13
+        ]
+      ],
+      [
+        [
+          3,
+          13,
+          0
+        ],
+        [
+          3,
+          13,
+          12
+        ]
+      ],
+      [
+        [
+          3,
+          14,
+          0
+        ],
+        [
+          3,
+          14,
+          3
+        ]
+      ]
+    ],
+    "fixed_in": [],
+    "fixed_but_not_released": [],
+    "fixes_pending": [
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        3,
+        14
+      ]
+    ]
   }
 ]

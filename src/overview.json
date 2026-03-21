@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-20T18:16:13+00:00",
+  "last_updated": "2026-03-21T00:27:54+00:00",
   "versions": [
     {
       "version": [
@@ -12,15 +12,16 @@
           14,
           3
         ],
-        "status": "MEDIUM"
+        "status": "HIGH"
       },
       "is_affected": true,
-      "total_advisories": 18,
-      "last_published": "2026-03-18T18:13:42.288000+00:00",
+      "total_advisories": 19,
+      "last_published": "2026-03-20T15:08:32.576000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
-        "MEDIUM": [
+        "MEDIUM": [],
+        "HIGH": [
           {
             "start": [
               3,
@@ -34,7 +35,6 @@
             ]
           }
         ],
-        "HIGH": [],
         "CRITICAL": []
       }
     },
@@ -49,28 +49,15 @@
           13,
           12
         ],
-        "status": "MEDIUM"
+        "status": "HIGH"
       },
       "is_affected": true,
-      "total_advisories": 30,
-      "last_published": "2026-03-18T18:13:42.288000+00:00",
+      "total_advisories": 31,
+      "last_published": "2026-03-20T15:08:32.576000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
-        "MEDIUM": [
-          {
-            "start": [
-              3,
-              13,
-              6
-            ],
-            "end": [
-              3,
-              13,
-              12
-            ]
-          }
-        ],
+        "MEDIUM": [],
         "HIGH": [
           {
             "start": [
@@ -81,7 +68,7 @@
             "end": [
               3,
               13,
-              5
+              12
             ]
           }
         ],
@@ -112,28 +99,15 @@
           12,
           13
         ],
-        "status": "MEDIUM"
+        "status": "HIGH"
       },
       "is_affected": true,
-      "total_advisories": 42,
-      "last_published": "2026-03-18T18:13:42.288000+00:00",
+      "total_advisories": 43,
+      "last_published": "2026-03-20T15:08:32.576000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
-        "MEDIUM": [
-          {
-            "start": [
-              3,
-              12,
-              12
-            ],
-            "end": [
-              3,
-              12,
-              13
-            ]
-          }
-        ],
+        "MEDIUM": [],
         "HIGH": [
           {
             "start": [
@@ -141,7 +115,11 @@
               12,
               11
             ],
-            "end": null
+            "end": [
+              3,
+              12,
+              13
+            ]
           }
         ],
         "CRITICAL": [
@@ -171,28 +149,15 @@
           11,
           15
         ],
-        "status": "MEDIUM"
+        "status": "HIGH"
       },
       "is_affected": true,
-      "total_advisories": 47,
-      "last_published": "2026-03-18T18:13:42.288000+00:00",
+      "total_advisories": 48,
+      "last_published": "2026-03-20T15:08:32.576000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
-        "MEDIUM": [
-          {
-            "start": [
-              3,
-              11,
-              14
-            ],
-            "end": [
-              3,
-              11,
-              15
-            ]
-          }
-        ],
+        "MEDIUM": [],
         "HIGH": [
           {
             "start": [
@@ -200,7 +165,11 @@
               11,
               13
             ],
-            "end": null
+            "end": [
+              3,
+              11,
+              15
+            ]
           }
         ],
         "CRITICAL": [
@@ -230,28 +199,15 @@
           10,
           20
         ],
-        "status": "MEDIUM"
+        "status": "HIGH"
       },
       "is_affected": true,
-      "total_advisories": 52,
-      "last_published": "2026-03-18T18:13:42.288000+00:00",
+      "total_advisories": 53,
+      "last_published": "2026-03-20T15:08:32.576000+00:00",
       "ranges_by_status": {
         "SAFE": [],
         "LOW": [],
-        "MEDIUM": [
-          {
-            "start": [
-              3,
-              10,
-              19
-            ],
-            "end": [
-              3,
-              10,
-              20
-            ]
-          }
-        ],
+        "MEDIUM": [],
         "HIGH": [
           {
             "start": [
@@ -259,7 +215,11 @@
               10,
               18
             ],
-            "end": null
+            "end": [
+              3,
+              10,
+              20
+            ]
           }
         ],
         "CRITICAL": [
