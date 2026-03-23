@@ -48,7 +48,7 @@ lines-after-imports = 2
 packages = ["pythoncve"]
 
 [build-system]
-requires = ["hatchling==1.28.0"]
+requires = ["hatchling==1.29.0"]
 build-backend = "hatchling.build"
 
 [dependency-groups]
@@ -56,6 +56,6 @@ dev = [
     "pytest==9.0.2",
     "pytest-snapshot==0.9.0",
     "pytest-cov==7.0.0",
-    "ruff==0.14.10",
+    "ruff==0.15.6",
     "ty",
 ]
