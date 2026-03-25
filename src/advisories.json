@@ -17718,7 +17718,7 @@
     "id": "PSF-2026-14",
     "cve": "CVE-2026-4519",
     "published": "2026-03-20T15:08:32.576000+00:00",
-    "modified": "2026-03-20T20:07:08.244000+00:00",
+    "modified": "2026-03-24T19:03:47.279000+00:00",
     "severity": {
       "name": "HIGH",
       "score": 7,
@@ -17793,27 +17793,40 @@
       ]
     ],
     "fixed_in": [],
-    "fixed_but_not_released": [],
+    "fixed_but_not_released": [
+      {
+        "branch": [
+          3,
+          10
+        ],
+        "commit": "ad4d5ba32af4d80b0dfa2ba9d8203bfb219e60a5"
+      },
+      {
+        "branch": [
+          3,
+          11
+        ],
+        "commit": "ceac1efc66516ac387eef2c9a0ce671895b44f03"
+      },
+      {
+        "branch": [
+          3,
+          13
+        ],
+        "commit": "43fe06b96f6a6cf5cfd5bdab20b8649374956866"
+      },
+      {
+        "branch": [
+          3,
+          14
+        ],
+        "commit": "9669a912a0e329c094e992204d6bdb8787024d76"
+      }
+    ],
     "fixes_pending": [
       [
         3,
-        10
-      ],
-      [
-        3,
-        11
-      ],
-      [
-        3,
         12
-      ],
-      [
-        3,
-        13
-      ],
-      [
-        3,
-        14
       ]
     ]
   }
